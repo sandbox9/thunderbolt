@@ -1,4 +1,4 @@
-package sandbox9.thunderbolt.product.api;
+package sandbox9.thunderbolt.product.api.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

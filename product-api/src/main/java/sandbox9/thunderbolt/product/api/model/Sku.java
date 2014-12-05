@@ -1,6 +1,7 @@
 package sandbox9.thunderbolt.product.api.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by chanwook on 2014. 12. 5..
@@ -15,12 +16,12 @@ public class Sku implements Serializable {
 
     private long stock;
 
-    private String createdDate;
+    private Date createdDate;
 
     public Sku() {
     }
 
-    public Sku(int skuId, String skuName, long salePrice, long stock, String createdDate) {
+    public Sku(int skuId, String skuName, long salePrice, long stock, Date createdDate) {
         this.skuId = skuId;
         this.skuName = skuName;
         this.salePrice = salePrice;
@@ -60,11 +61,11 @@ public class Sku implements Serializable {
         this.stock = stock;
     }
 
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(String createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 }
