@@ -1,0 +1,44 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.7
+version = '1.0-SNAPSHOT'
+
+war {
+    baseName = "product-eventstore"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+
+    maven {
+        url 'http://repo.spring.io/milestone'
+    }
+
+    jcenter()
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+
+        maven {
+            url 'http://repo.spring.io/milestone'
+        }
+
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE'
+    }
+}
+
+dependencies {
+    compile project (':commonlib')
+
+    def springBootVersion = '1.1.9.RELEASE'
+}

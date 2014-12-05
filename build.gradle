@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+
+    maven {
+        url 'http://repo.spring.io/milestone'
+    }
+}
+
+ext {
+    javaVersion = 1.7
+}
+
+sourceCompatibility = rootProject.ext.javaVersion
+targetCompatibility = rootProject.ext.javaVersion
+
+group = "sandbox9"
+version = "1.0-SNAPSHOT"
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
