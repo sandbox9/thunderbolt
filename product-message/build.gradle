@@ -1,12 +1,12 @@
 apply plugin: 'java'
 apply plugin: 'maven'
-apply plugin: 'spring-boot'
 
 sourceCompatibility = 1.7
 version = '1.0-SNAPSHOT'
 
+
 jar {
-    baseName = "product-eventstore"
+    baseName = "product-message"
 }
 
 repositories {
@@ -39,8 +39,4 @@ buildscript {
 
 dependencies {
     compile project (':commonlib')
-    compile project (':product-message')
-
-    def springBootVersion = '1.1.9.RELEASE'
-    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 }

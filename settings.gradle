@@ -5,3 +5,5 @@ include 'site'
 include 'product-eventstore'
 include 'product-api'
 
+include 'product-message'
+
