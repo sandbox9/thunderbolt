@@ -10,6 +10,5 @@ import java.util.Map;
  * Created by chanwook on 2014. 12. 6..
  */
 public interface ProductEventRepository {
-
-    Map<String, List<ProductSkuPriceEvent>> findEvent(List<Product> productList);
+    Map<Integer, List<ProductSkuPriceEvent>> findEvent(List<Product> productList);
 }

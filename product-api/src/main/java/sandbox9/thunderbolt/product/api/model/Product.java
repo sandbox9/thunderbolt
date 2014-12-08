@@ -91,4 +91,13 @@ public class Product implements Serializable {
     public void addSku(Sku sku) {
         this.skuList.add(sku);
     }
+
+    public Sku getSku(int skuId) {
+        for (Sku sku : skuList) {
+            if (skuId == sku.getSkuId()) {
+                return sku;
+            }
+        }
+        return null;
+    }
 }
