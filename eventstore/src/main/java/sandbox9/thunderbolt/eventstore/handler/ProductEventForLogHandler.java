@@ -10,7 +10,7 @@ import sandbox9.thunderbolt.product.message.ProductSkuPriceEvent;
 public class ProductEventForLogHandler {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    public void recieveEvent(ProductSkuPriceEvent event) {
-        logger.info("[Receive product event] " + event.toString());
+    public void handleMessage(ProductSkuPriceEvent event) {
+        logger.info("[상품 수정 이벤트 수신] " + event.toString());
     }
 }

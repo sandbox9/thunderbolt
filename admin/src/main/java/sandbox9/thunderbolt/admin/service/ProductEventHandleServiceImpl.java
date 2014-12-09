@@ -65,7 +65,7 @@ public class ProductEventHandleServiceImpl implements ProductEventHandleService 
 
     private void produceProductChangeEvent(ProductViewModelMap model, List<ProductSkuPriceEvent> eventList) {
         for (ProductSkuPriceEvent e : eventList) {
-            logger.info("[Send product Event] " + e.toString());
+            logger.info("[상품 이벤트 전송] " + e.toString());
             rabbitTemplate.convertAndSend(e);
         }
     }

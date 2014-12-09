@@ -24,6 +24,9 @@ public class QueueConfiguration {
     @Value("${queue.password}")
     private String password;
 
+    @Value("${queue.routingkey}")
+    private String routingKey;
+
     @Bean
     ConnectionFactory connectionFactory() {
         CachingConnectionFactory f = new CachingConnectionFactory(hostname);
@@ -36,7 +39,8 @@ public class QueueConfiguration {
     @Bean
     RabbitTemplate rabbitTemplate() {
         RabbitTemplate t = new RabbitTemplate(connectionFactory());
-        t.setRoutingKey(this.exchangeName);
+        t.setRoutingKey(this.routingKey);
+        t.setExchange(this.exchangeName);
         return t;
     }
 }

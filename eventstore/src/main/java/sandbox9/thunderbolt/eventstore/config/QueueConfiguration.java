@@ -31,6 +31,7 @@ public class QueueConfiguration {
         CachingConnectionFactory f = new CachingConnectionFactory(hostname);
         f.setUsername(userName);
         f.setPassword(password);
+        f.setVirtualHost(userName);
         return f;
     }
 
