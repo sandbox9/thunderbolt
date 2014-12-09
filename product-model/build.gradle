@@ -1,14 +1,12 @@
 apply plugin: 'java'
-apply plugin: 'war'
 apply plugin: 'maven'
-apply plugin: 'jetty'
-apply plugin: 'spring-boot'
 
 sourceCompatibility = 1.7
 version = '1.0-SNAPSHOT'
 
-war {
-    baseName = "product-api"
+
+jar {
+    baseName = "product-model"
 }
 
 repositories {
@@ -41,9 +39,7 @@ buildscript {
 
 dependencies {
     compile project (':commonlib')
-    compile project (':product-model')
 
     def springBootVersion = '1.1.9.RELEASE'
-    compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter-amqp:${springBootVersion}"
 }

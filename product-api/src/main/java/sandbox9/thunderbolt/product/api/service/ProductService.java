@@ -1,6 +1,6 @@
 package sandbox9.thunderbolt.product.api.service;
 
-import sandbox9.thunderbolt.product.api.model.Product;
+import sandbox9.thunderbolt.product.model.Product;
 
 import java.util.List;
 

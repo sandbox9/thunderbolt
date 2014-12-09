@@ -1,4 +1,4 @@
-package sandbox9.thunderbolt.product.api.repository;
+package sandbox9.thunderbolt.admin.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import sandbox9.thunderbolt.product.model.Product;

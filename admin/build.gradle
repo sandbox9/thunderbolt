@@ -1,14 +1,13 @@
 apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'maven'
-apply plugin: 'jetty'
 apply plugin: 'spring-boot'
 
 sourceCompatibility = 1.7
 version = '1.0-SNAPSHOT'
 
 war {
-    baseName = "product-api"
+    baseName = "admin"
 }
 
 repositories {
@@ -45,5 +44,6 @@ dependencies {
 
     def springBootVersion = '1.1.9.RELEASE'
     compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}"
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 }

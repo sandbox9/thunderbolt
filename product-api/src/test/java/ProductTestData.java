@@ -5,8 +5,8 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import sandbox9.thunderbolt.product.api.Application;
-import sandbox9.thunderbolt.product.api.model.Product;
-import sandbox9.thunderbolt.product.api.model.Sku;
+import sandbox9.thunderbolt.product.message.Product;
+import sandbox9.thunderbolt.product.message.Sku;
 import sandbox9.thunderbolt.product.api.repository.ProductRepository;
 
 import java.util.Date;
