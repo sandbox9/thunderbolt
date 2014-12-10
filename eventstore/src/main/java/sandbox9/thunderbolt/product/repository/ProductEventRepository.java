@@ -1,4 +1,4 @@
-package sandbox9.thunderbolt.product.api.repository;
+package sandbox9.thunderbolt.product.repository;
 
 import sandbox9.thunderbolt.product.message.ProductSkuPriceEvent;
 import sandbox9.thunderbolt.product.model.Product;

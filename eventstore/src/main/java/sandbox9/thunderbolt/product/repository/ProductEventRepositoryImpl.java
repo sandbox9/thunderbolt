@@ -1,4 +1,4 @@
-package sandbox9.thunderbolt.product.api.repository;
+package sandbox9.thunderbolt.product.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;

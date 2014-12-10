@@ -3,7 +3,6 @@ apply plugin: 'maven'
 apply plugin: 'spring-boot'
 apply plugin: 'war'
 
-sourceCompatibility = 1.7
 version = '1.0-SNAPSHOT'
 
 war {

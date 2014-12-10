@@ -1,4 +1,4 @@
-package sandbox9.thunderbolt.eventstore.config;
+package sandbox9.thunderbolt.config;
 
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -7,7 +7,7 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import sandbox9.thunderbolt.eventstore.handler.ProductEventForLogHandler;
+import sandbox9.thunderbolt.product.handler.ProductEventForLogHandler;
 
 /**
  * Created by chanwook on 2014. 12. 6..

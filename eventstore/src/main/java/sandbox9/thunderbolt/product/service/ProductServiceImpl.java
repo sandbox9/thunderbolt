@@ -1,4 +1,4 @@
-package sandbox9.thunderbolt.product.api.service;
+package sandbox9.thunderbolt.product.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import sandbox9.thunderbolt.product.api.repository.ProductEventRepository;
-import sandbox9.thunderbolt.product.api.repository.ProductRepository;
+import sandbox9.thunderbolt.product.repository.ProductEventRepository;
+import sandbox9.thunderbolt.product.repository.ProductRepository;
 import sandbox9.thunderbolt.product.message.ProductSkuPriceEvent;
 import sandbox9.thunderbolt.product.message.SkuPricingEventType;
 import sandbox9.thunderbolt.product.model.Product;

@@ -1,4 +1,4 @@
-package sandbox9.thunderbolt.product.api.service;
+package sandbox9.thunderbolt.product.service;
 
 import sandbox9.thunderbolt.product.model.Product;
 

@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import sandbox9.thunderbolt.product.api.Application;
-import sandbox9.thunderbolt.product.message.Product;
-import sandbox9.thunderbolt.product.message.Sku;
-import sandbox9.thunderbolt.product.api.repository.ProductRepository;
+import sandbox9.thunderbolt.Application;
+import sandbox9.thunderbolt.product.repository.ProductRepository;
+import sandbox9.thunderbolt.product.model.Product;
+import sandbox9.thunderbolt.product.model.Sku;
 
 import java.util.Date;
 
