@@ -3,6 +3,6 @@ rootProject.name = 'thunderbolt'
 include 'commonlib'
 include 'site'
 include 'eventstore'
-include 'product-model'
+include 'model'
 include 'admin'
 
