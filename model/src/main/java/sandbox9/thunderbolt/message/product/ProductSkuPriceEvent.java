@@ -1,4 +1,4 @@
-package sandbox9.thunderbolt.product.message;
+package sandbox9.thunderbolt.message.product;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

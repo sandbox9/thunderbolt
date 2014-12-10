@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
-import sandbox9.thunderbolt.product.message.ProductSkuPriceEvent;
-import sandbox9.thunderbolt.product.model.Product;
+import sandbox9.thunderbolt.message.product.ProductSkuPriceEvent;
+import sandbox9.thunderbolt.entity.product.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;

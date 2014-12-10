@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sandbox9.thunderbolt.admin.model.ProductViewModel;
 import sandbox9.thunderbolt.admin.model.ProductViewModelMap;
-import sandbox9.thunderbolt.product.message.ProductSkuPriceEvent;
-import sandbox9.thunderbolt.product.message.SkuPricingEventType;
-import sandbox9.thunderbolt.product.model.Sku;
+import sandbox9.thunderbolt.message.product.ProductSkuPriceEvent;
+import sandbox9.thunderbolt.message.product.SkuPricingEventType;
+import sandbox9.thunderbolt.entity.product.Sku;
 
 import java.util.ArrayList;
 import java.util.Date;

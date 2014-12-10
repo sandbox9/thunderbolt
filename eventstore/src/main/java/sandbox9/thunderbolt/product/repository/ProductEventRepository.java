@@ -1,7 +1,7 @@
 package sandbox9.thunderbolt.product.repository;
 
-import sandbox9.thunderbolt.product.message.ProductSkuPriceEvent;
-import sandbox9.thunderbolt.product.model.Product;
+import sandbox9.thunderbolt.message.product.ProductSkuPriceEvent;
+import sandbox9.thunderbolt.entity.product.Product;
 
 import java.util.List;
 import java.util.Map;

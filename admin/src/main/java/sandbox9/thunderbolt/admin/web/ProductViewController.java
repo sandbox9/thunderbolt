@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import sandbox9.thunderbolt.admin.model.ProductViewModelMap;
 import sandbox9.thunderbolt.admin.repository.ProductRepository;
 import sandbox9.thunderbolt.admin.service.ProductEventHandleService;
-import sandbox9.thunderbolt.product.model.Product;
+import sandbox9.thunderbolt.entity.product.Product;
 
 import java.util.List;
 

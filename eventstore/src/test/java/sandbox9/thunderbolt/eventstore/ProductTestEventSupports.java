@@ -1,3 +1,5 @@
+package sandbox9.thunderbolt.eventstore;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -5,8 +7,8 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import sandbox9.thunderbolt.Application;
-import sandbox9.thunderbolt.product.message.ProductSkuPriceEvent;
-import sandbox9.thunderbolt.product.message.SkuPricingEventType;
+import sandbox9.thunderbolt.message.product.ProductSkuPriceEvent;
+import sandbox9.thunderbolt.message.product.SkuPricingEventType;
 
 import java.util.Date;
 

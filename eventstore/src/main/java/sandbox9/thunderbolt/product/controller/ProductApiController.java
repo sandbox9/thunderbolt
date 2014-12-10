@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import sandbox9.thunderbolt.product.service.ProductService;
-import sandbox9.thunderbolt.product.model.Product;
+import sandbox9.thunderbolt.entity.product.Product;
 
 import java.util.List;
 

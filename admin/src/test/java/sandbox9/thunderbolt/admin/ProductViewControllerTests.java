@@ -9,8 +9,8 @@ import sandbox9.thunderbolt.admin.model.ProductViewModel;
 import sandbox9.thunderbolt.admin.model.ProductViewModelMap;
 import sandbox9.thunderbolt.admin.repository.ProductRepository;
 import sandbox9.thunderbolt.admin.web.ProductViewController;
-import sandbox9.thunderbolt.product.model.Product;
-import sandbox9.thunderbolt.product.model.Sku;
+import sandbox9.thunderbolt.entity.product.Product;
+import sandbox9.thunderbolt.entity.product.Sku;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,7 +2,7 @@ package sandbox9.thunderbolt.product.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sandbox9.thunderbolt.product.message.ProductSkuPriceEvent;
+import sandbox9.thunderbolt.message.product.ProductSkuPriceEvent;
 
 /**
  * Created by chanwook on 2014. 12. 9..
