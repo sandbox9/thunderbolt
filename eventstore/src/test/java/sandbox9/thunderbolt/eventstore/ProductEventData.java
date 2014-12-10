@@ -17,7 +17,7 @@ import java.util.Date;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-public class ProductTestEventSupports {
+public class ProductEventData {
 
     @Autowired
     MongoTemplate m;

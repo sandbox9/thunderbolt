@@ -1,7 +1,7 @@
 package sandbox9.thunderbolt.product.repository;
 
-import sandbox9.thunderbolt.message.product.ProductSkuPriceEvent;
 import sandbox9.thunderbolt.entity.product.Product;
+import sandbox9.thunderbolt.message.product.ProductSkuPriceEvent;
 
 import java.util.List;
 import java.util.Map;
@@ -11,4 +11,6 @@ import java.util.Map;
  */
 public interface ProductEventRepository {
     Map<Integer, List<ProductSkuPriceEvent>> findEvent(List<Product> productList);
+
+    void save(ProductSkuPriceEvent event);
 }

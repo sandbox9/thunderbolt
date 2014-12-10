@@ -47,4 +47,9 @@ public class ProductEventRepositoryImpl implements ProductEventRepository {
         }
         return eventMap;
     }
+
+    @Override
+    public void save(ProductSkuPriceEvent event) {
+        t.save(event);
+    }
 }
