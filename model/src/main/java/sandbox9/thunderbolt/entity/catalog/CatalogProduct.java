@@ -29,9 +29,6 @@ public class CatalogProduct implements Serializable {
 
     private String displayName;
 
-    // sku 가격 중 가장 낮은 가격
-    private long lowestSalePrice;
-
     // 대표 Sku를 지정해 처리할 수 있도록함
     private Sku standardSku;
 
@@ -43,14 +40,13 @@ public class CatalogProduct implements Serializable {
     }
 
     public CatalogProduct(String catalogProductId, int productId, String catalogId, String displayCategoryId, String productName,
-                          String displayName, long lowestSalePrice, Sku standardSku, String manufacturer) {
+                          String displayName, Sku standardSku, String manufacturer) {
         this.catalogProductId = catalogProductId;
         this.productId = productId;
         this.catalogId = catalogId;
         this.displayCategoryId = displayCategoryId;
         this.productName = productName;
         this.displayName = displayName;
-        this.lowestSalePrice = lowestSalePrice;
         this.standardSku = standardSku;
         this.manufacturer = manufacturer;
     }
@@ -93,14 +89,6 @@ public class CatalogProduct implements Serializable {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
-    }
-
-    public long getLowestSalePrice() {
-        return lowestSalePrice;
-    }
-
-    public void setLowestSalePrice(long lowestSalePrice) {
-        this.lowestSalePrice = lowestSalePrice;
     }
 
     public Sku getStandardSku() {

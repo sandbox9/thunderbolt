@@ -13,7 +13,8 @@ import sandbox9.thunderbolt.entity.catalog.repository.CatalogProductRepository;
 import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.repository.ProductRepository;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by chanwook on 2014. 12. 6..
@@ -46,7 +47,6 @@ public class CatalogTestData {
 
         Product master = productRepository.findOne(productId);
         CatalogProduct catalogProduct = createCatalogProduct(catalogProductId, catalogId, displayCategoryId, master);
-        catalogProduct.setLowestSalePrice(master.seekLowestSalePrice());
         catalogProduct.setStandardSku(master.getStandardSku());
         catalogProduct.setDisplayCategoryId(displayCategoryId);
 
@@ -55,7 +55,6 @@ public class CatalogTestData {
         // assertion
         CatalogProduct saved = catalogProductRepository.findOne(catalogProductId);
         assertNotNull(saved);
-        assertTrue(master.seekLowestSalePrice() == saved.getLowestSalePrice());
         assertEquals(master.getStandardSku().getSkuId(), saved.getStandardSku().getSkuId());
         assertEquals(catalogId, saved.getCatalogId());
         assertEquals(displayCategoryId, saved.getDisplayCategoryId());
@@ -63,7 +62,6 @@ public class CatalogTestData {
 
     private CatalogProduct createCatalogProduct(String catalogProductId, String catalogId, String displayCategoryId, Product master) {
         return new CatalogProduct(catalogProductId, master.getProductId(), catalogId, displayCategoryId, master.getProductName(),
-                master.getDisplayName(), master.seekLowestSalePrice(), master.getStandardSku(),
-                master.getManufacturer());
+                master.getDisplayName(), master.getStandardSku(), master.getManufacturer());
     }
 }

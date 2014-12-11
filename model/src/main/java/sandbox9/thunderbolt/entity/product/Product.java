@@ -1,5 +1,6 @@
 package sandbox9.thunderbolt.entity.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -142,6 +143,7 @@ public class Product implements Serializable {
         return lowestPrice;
     }
 
+    @JsonIgnore
     public Sku getStandardSku() {
         if (getStandardSkuId() <= 0) {
             throw new IllegalArgumentException("상품 ID" + getProductId() + "에 해당하는 Standard Sku id가 지정되지 않았습니다!");
