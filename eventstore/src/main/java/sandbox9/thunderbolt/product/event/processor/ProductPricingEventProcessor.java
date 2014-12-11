@@ -1,4 +1,4 @@
-package sandbox9.thunderbolt.product.event.finder;
+package sandbox9.thunderbolt.product.event.processor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,10 @@ public class ProductPricingEventProcessor implements EventProcessor {
     @Autowired
     private ProductEventRepository er;
 
-    public void processing(List<Product> productList) {
+    @Override
+    public void processing(Object eventSeed) {
+        List<Product> productList = (List<Product>) eventSeed;
+
         // TODO 별도 컴포넌트로 설계해 빼내기. CatalogProduct와 통합
         Map<Integer, List<ProductSkuPriceEvent>> eventMap = er.findEvent(productList);
 

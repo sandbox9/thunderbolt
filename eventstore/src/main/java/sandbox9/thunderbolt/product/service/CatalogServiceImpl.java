@@ -6,7 +6,7 @@ import sandbox9.thunderbolt.entity.catalog.Catalog;
 import sandbox9.thunderbolt.entity.catalog.CatalogProduct;
 import sandbox9.thunderbolt.entity.catalog.repository.CatalogProductCustomRepository;
 import sandbox9.thunderbolt.entity.product.Product;
-import sandbox9.thunderbolt.product.event.finder.ProductPricingEventProcessor;
+import sandbox9.thunderbolt.product.event.processor.EventProcessor;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class CatalogServiceImpl implements CatalogService {
     private CatalogProductCustomRepository repository;
 
     @Autowired
-    private ProductPricingEventProcessor eventProcessor;
+    private EventProcessor eventProcessor;
 
     @Override
     public Catalog find(String catalogId, int pageNumber, int pageSize) {

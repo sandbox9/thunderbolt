@@ -8,7 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.repository.ProductRepository;
-import sandbox9.thunderbolt.product.event.finder.ProductPricingEventProcessor;
+import sandbox9.thunderbolt.product.event.processor.EventProcessor;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository r;
 
     @Autowired
-    private ProductPricingEventProcessor eventProcessor;
+    private EventProcessor eventProcessor;
 
     @Override
     public List<Product> find(int pageNumber, int pageSize) {
