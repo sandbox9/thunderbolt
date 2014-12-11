@@ -6,7 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,10 +22,6 @@ public class Product implements Serializable {
     private String displayName;
 
     private String description;
-
-    private Date openDate;
-
-    private Date endDate;
 
     private List<Sku> skuList = new ArrayList<Sku>();
 
@@ -45,13 +40,11 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(int productId, String productName, String displayName, String description, Date openDate, Date endDate, String manufacturer, int managementCategoryId) {
+    public Product(int productId, String productName, String displayName, String description, String manufacturer, int managementCategoryId) {
         this.productId = productId;
         this.productName = productName;
         this.displayName = displayName;
         this.description = description;
-        this.openDate = openDate;
-        this.endDate = endDate;
         this.manufacturer = manufacturer;
         this.managementCategoryId = managementCategoryId;
     }
@@ -78,22 +71,6 @@ public class Product implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Date getOpenDate() {
-        return openDate;
-    }
-
-    public void setOpenDate(Date openDate) {
-        this.openDate = openDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
 
     public List<Sku> getSkuList() {

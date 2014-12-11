@@ -4,7 +4,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import sandbox9.thunderbolt.entity.product.Sku;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by chanwook on 2014. 12. 10..
@@ -16,10 +15,6 @@ public class CatalogProduct implements Serializable {
     private String productName;
 
     private String displayName;
-
-    private Date openDate;
-
-    private Date endDate;
 
     // sku 가격 중 가장 낮은 가격
     private long lowestSalePrice;
@@ -34,12 +29,10 @@ public class CatalogProduct implements Serializable {
     public CatalogProduct() {
     }
 
-    public CatalogProduct(int productId, String productName, String displayName, Date openDate, Date endDate, String manufacturer) {
+    public CatalogProduct(int productId, String productName, String displayName, String manufacturer) {
         this.productId = productId;
         this.productName = productName;
         this.displayName = displayName;
-        this.openDate = openDate;
-        this.endDate = endDate;
         this.manufacturer = manufacturer;
     }
 
@@ -65,22 +58,6 @@ public class CatalogProduct implements Serializable {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
-    }
-
-    public Date getOpenDate() {
-        return openDate;
-    }
-
-    public void setOpenDate(Date openDate) {
-        this.openDate = openDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
 
     public long getLowestSalePrice() {

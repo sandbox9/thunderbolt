@@ -27,20 +27,14 @@ public class Catalog implements Serializable {
 
     private List<CatalogProduct> productList = new ArrayList<CatalogProduct>();
 
-    private Date openDate;
-
-    private Date endDate;
-
     private Date created;
 
     public Catalog() {
     }
 
-    public Catalog(String catalogId, String displayCategoryId, Date openDate, Date endDate, Date created) {
+    public Catalog(String catalogId, String displayCategoryId, Date created) {
         this.catalogId = catalogId;
         this.displayCategoryId = displayCategoryId;
-        this.openDate = openDate;
-        this.endDate = endDate;
         this.created = created;
     }
 

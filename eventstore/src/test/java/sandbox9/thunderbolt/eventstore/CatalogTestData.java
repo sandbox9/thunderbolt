@@ -41,7 +41,7 @@ public class CatalogTestData {
 
         Product master = productRepository.findOne(productId);
 
-        Catalog catalog = new Catalog(catalogId, displayCategoryId, new Date(), new Date(), new Date());
+        Catalog catalog = new Catalog(catalogId, displayCategoryId, new Date());
         CatalogProduct catalogProduct = createCatalogProduct(master);
         catalogProduct.setLowestSalePrice(master.seekLowestSalePrice());
         catalogProduct.setStandardSku(master.getStandardSku());
@@ -59,7 +59,6 @@ public class CatalogTestData {
     }
 
     private CatalogProduct createCatalogProduct(Product master) {
-        return new CatalogProduct(master.getProductId(), master.getProductName(), master.getDisplayName(),
-                master.getOpenDate(), master.getEndDate(), master.getManufacturer());
+        return new CatalogProduct(master.getProductId(), master.getProductName(), master.getDisplayName(), master.getManufacturer());
     }
 }

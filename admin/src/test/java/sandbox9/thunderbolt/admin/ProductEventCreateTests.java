@@ -57,12 +57,15 @@ public class ProductEventCreateTests {
         ProductViewModel model = new ProductViewModel();
         Product p = r.findOne(101);
 
+        //TODO 필드 변경 시마다 해주지 않도록 객체 복사 기능 적용
         model.setProductId(p.getProductId());
         model.setProductName(p.getProductName());
         model.setSkuList(p.getSkuList());
         model.setDescription(p.getDescription());
-        model.setOpenDate(p.getOpenDate());
-        model.setEndDate(p.getEndDate());
+        model.setDisplayName(p.getDisplayName());
+        model.setManagementCategoryId(p.getManagementCategoryId());
+        model.setManufacturer(p.getManufacturer());
+        model.setStandardSkuId(p.getStandardSkuId());
 
         return model;
     }
