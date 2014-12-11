@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
-import sandbox9.thunderbolt.message.product.ProductSkuPriceEvent;
 import sandbox9.thunderbolt.entity.product.Product;
+import sandbox9.thunderbolt.message.product.ProductSkuPriceEvent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +31,11 @@ public class ProductEventRepositoryImpl implements ProductEventRepository {
             idList.add(p.getProductId());
         }
 
+        return findEventById(idList);
+    }
+
+    @Override
+    public Map<Integer, List<ProductSkuPriceEvent>> findEventById(List<Integer> idList) {
         Query query = query(where("productId").in(idList));
         List<ProductSkuPriceEvent> eventList = t.find(query, ProductSkuPriceEvent.class);
 

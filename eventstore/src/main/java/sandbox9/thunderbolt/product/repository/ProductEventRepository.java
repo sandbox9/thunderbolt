@@ -12,5 +12,7 @@ import java.util.Map;
 public interface ProductEventRepository {
     Map<Integer, List<ProductSkuPriceEvent>> findEvent(List<Product> productList);
 
+    Map<Integer, List<ProductSkuPriceEvent>> findEventById(List<Integer> productIdList);
+
     void save(ProductSkuPriceEvent event);
 }
