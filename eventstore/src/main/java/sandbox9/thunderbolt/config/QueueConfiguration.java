@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import sandbox9.thunderbolt.product.handler.ProductEventForLogHandler;
+import sandbox9.thunderbolt.product.event.handler.ProductPricingEventHandler;
 import sandbox9.thunderbolt.product.repository.ProductEventRepository;
 
 /**
@@ -45,7 +45,7 @@ public class QueueConfiguration {
         SimpleMessageListenerContainer c = new SimpleMessageListenerContainer();
         c.setQueueNames(this.queueName);
         c.setConnectionFactory(connectionFactory());
-        c.setMessageListener(new MessageListenerAdapter(new ProductEventForLogHandler(this.productEventRepository)));
+        c.setMessageListener(new MessageListenerAdapter(new ProductPricingEventHandler(this.productEventRepository)));
         return c;
     }
 }

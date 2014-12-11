@@ -146,7 +146,7 @@ public class Product implements Serializable {
     @JsonIgnore
     public Sku getStandardSku() {
         if (getStandardSkuId() <= 0) {
-            throw new IllegalArgumentException("상품 ID" + getProductId() + "에 해당하는 Standard Sku id가 지정되지 않았습니다!");
+            throw new IllegalArgumentException("상품 ID " + getProductId() + "에 해당하는 Standard Sku id가 지정되지 않았습니다!");
         }
         return getSku(getStandardSkuId());
     }

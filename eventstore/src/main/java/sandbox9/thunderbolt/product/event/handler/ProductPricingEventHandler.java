@@ -1,4 +1,4 @@
-package sandbox9.thunderbolt.product.handler;
+package sandbox9.thunderbolt.product.event.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,12 +8,12 @@ import sandbox9.thunderbolt.product.repository.ProductEventRepository;
 /**
  * Created by chanwook on 2014. 12. 9..
  */
-public class ProductEventForLogHandler {
+public class ProductPricingEventHandler {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private ProductEventRepository productEventRepository;
 
-    public ProductEventForLogHandler(ProductEventRepository productEventRepository) {
+    public ProductPricingEventHandler(ProductEventRepository productEventRepository) {
         this.productEventRepository = productEventRepository;
     }
 

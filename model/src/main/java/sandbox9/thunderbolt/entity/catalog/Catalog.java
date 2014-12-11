@@ -1,5 +1,7 @@
 package sandbox9.thunderbolt.entity.catalog;
 
+import sandbox9.thunderbolt.entity.product.Product;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,11 +47,31 @@ public class Catalog implements Serializable {
         this.productList.add(catalogProduct);
     }
 
-    public List<Integer> originalProductList() {
-        List<Integer> idList = new ArrayList<Integer>();
-        for (CatalogProduct p : productList) {
-            idList.add(p.getProductId());
+    public List<Product> originalProductList() {
+        List<Product> productList = new ArrayList<Product>();
+        for (CatalogProduct p : this.productList) {
+            Product original = new Product();
+            original.setProductId(p.getProductId());
+            original.setStandardSkuId(p.getStandardSku().getSkuId());
+            original.addSku(p.getStandardSku());
+            productList.add(original);
         }
-        return idList;
+        return productList;
+    }
+
+    public void replaceStandardSku(List<Product> productList) {
+        for (Product p : productList) {
+            CatalogProduct cp = getCatalogProductById(p.getProductId());
+            cp.setStandardSku(p.getStandardSku());
+        }
+    }
+
+    private CatalogProduct getCatalogProductById(int productId) {
+        for (CatalogProduct cp : this.productList) {
+            if (productId == cp.getProductId()) {
+                return cp;
+            }
+        }
+        throw new IllegalArgumentException(productId + "에 해당하는 CatalogProduct가 존재하지 않습니다.");
     }
 }
