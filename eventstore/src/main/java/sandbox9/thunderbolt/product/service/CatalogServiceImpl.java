@@ -29,7 +29,7 @@ public class CatalogServiceImpl implements CatalogService {
         Catalog catalog = new Catalog(catalogId, productList);
 
         List<Product> originalProductList = catalog.originalProductList();
-        eventProcessor.processing(originalProductList);
+        eventProcessor.process(originalProductList);
         catalog.replaceStandardSku(originalProductList);
 
         return catalog;

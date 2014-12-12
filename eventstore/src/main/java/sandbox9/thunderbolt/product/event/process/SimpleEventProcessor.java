@@ -20,7 +20,7 @@ public class SimpleEventProcessor implements EventProcessor {
     private EventProcessActivity sotckProcessor;
 
     @Override
-    public void processing(Object eventSeed) {
+    public void process(Object eventSeed) {
         //TODO FW 기능으로 변경
         pricingProcessor.handleActivity(eventSeed);
         sotckProcessor.handleActivity(eventSeed);

@@ -11,4 +11,5 @@ public interface ProductService {
 
     List<Product> find(int pageNumber, int pageSize);
 
+    Product findOne(int productId);
 }
