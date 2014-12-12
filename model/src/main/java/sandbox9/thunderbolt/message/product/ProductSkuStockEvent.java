@@ -7,11 +7,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 /**
- * Created by chanwook on 2014. 12. 6..
+ * Created by chanwook on 2014. 12. 11..
  */
 @Document
-public class ProductSkuPriceEvent implements ProductSkuEvent {
-
+public class ProductSkuStockEvent implements ProductSkuEvent {
     @Id
     private String id;
 
@@ -27,11 +26,10 @@ public class ProductSkuPriceEvent implements ProductSkuEvent {
 
     private Date updatedDate;
 
-    public ProductSkuPriceEvent() {
+    public ProductSkuStockEvent() {
     }
 
-    public ProductSkuPriceEvent(int productId, int skuId, EventCalculationType calculationType,
-                                long changeValue, Date updatedDate) {
+    public ProductSkuStockEvent(int productId, int skuId, EventCalculationType calculationType, long changeValue, Date updatedDate) {
         this.productId = productId;
         this.skuId = skuId;
         this.calculationType = calculationType;
@@ -89,7 +87,7 @@ public class ProductSkuPriceEvent implements ProductSkuEvent {
 
     @Override
     public String toString() {
-        return "ProductSkuPriceEvent{" +
+        return "ProductSkuStockEvent{" +
                 "id='" + id + '\'' +
                 ", productId=" + productId +
                 ", skuId=" + skuId +

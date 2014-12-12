@@ -1,14 +1,12 @@
 package sandbox9.thunderbolt.product.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.repository.ProductRepository;
-import sandbox9.thunderbolt.product.event.processor.EventProcessor;
+import sandbox9.thunderbolt.product.event.process.EventProcessor;
 
 import java.util.List;
 
@@ -17,8 +15,6 @@ import java.util.List;
  */
 @Service
 public class ProductServiceImpl implements ProductService {
-
-    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private ProductRepository r;

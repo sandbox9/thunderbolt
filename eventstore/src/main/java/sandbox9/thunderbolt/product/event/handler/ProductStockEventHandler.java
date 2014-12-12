@@ -2,23 +2,23 @@ package sandbox9.thunderbolt.product.event.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sandbox9.thunderbolt.message.product.ProductSkuPriceEvent;
+import sandbox9.thunderbolt.message.product.ProductSkuStockEvent;
 import sandbox9.thunderbolt.product.repository.ProductEventRepository;
 
 /**
  * Created by chanwook on 2014. 12. 9..
  */
-public class ProductPricingEventHandler {
+public class ProductStockEventHandler {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private ProductEventRepository productEventRepository;
 
-    public ProductPricingEventHandler(ProductEventRepository productEventRepository) {
+    public ProductStockEventHandler(ProductEventRepository productEventRepository) {
         this.productEventRepository = productEventRepository;
     }
 
-    public void handleMessage(ProductSkuPriceEvent event) {
-        logger.info("[상품 가격 이벤트 수신] " + event);
+    public void handleMessage(ProductSkuStockEvent event) {
+        logger.info("[상품 재고 이벤트 수신] " + event);
 
         /**
          * 상품 가격 정보가 변경된 걸 받아서 두 가지 방법으로 해볼 수 있을 듯.
@@ -33,7 +33,7 @@ public class ProductPricingEventHandler {
             return;
         }
 
-        logger.info("[상품 가격 이벤트 처리 완료] " + event);
+        logger.info("[상품 재고 이벤트 처리 완료] " + event);
 
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import sandbox9.thunderbolt.product.event.handler.ProductPricingEventHandler;
+import sandbox9.thunderbolt.product.event.handler.ProductStockEventHandler;
 import sandbox9.thunderbolt.product.repository.ProductEventRepository;
 
 /**
@@ -19,8 +20,10 @@ public class QueueConfiguration {
 
     @Value("${queue.hostname}")
     private String hostname;
-    @Value("${queue.queuename}")
-    private String queueName;
+    @Value("${queue.queuename.price}")
+    private String priceQueueName;
+    @Value("${queue.queuename.stock}")
+    private String stockQueueName;
     @Value("${queue.exchangename}")
     private String exchangeName;
     @Value("${queue.username}")
@@ -41,11 +44,20 @@ public class QueueConfiguration {
     }
 
     @Bean
-    SimpleMessageListenerContainer listenerContainer() {
+    SimpleMessageListenerContainer pricingEvnetlistenerContainer() {
         SimpleMessageListenerContainer c = new SimpleMessageListenerContainer();
-        c.setQueueNames(this.queueName);
+        c.setQueueNames(this.priceQueueName);
         c.setConnectionFactory(connectionFactory());
         c.setMessageListener(new MessageListenerAdapter(new ProductPricingEventHandler(this.productEventRepository)));
+        return c;
+    }
+
+    @Bean
+    SimpleMessageListenerContainer stockEvnetlistenerContainer() {
+        SimpleMessageListenerContainer c = new SimpleMessageListenerContainer();
+        c.setQueueNames(this.stockQueueName);
+        c.setConnectionFactory(connectionFactory());
+        c.setMessageListener(new MessageListenerAdapter(new ProductStockEventHandler(this.productEventRepository)));
         return c;
     }
 }

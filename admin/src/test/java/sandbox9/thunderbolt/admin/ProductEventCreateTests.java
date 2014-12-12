@@ -32,10 +32,11 @@ public class ProductEventCreateTests {
         ProductViewModelMap modelMap = new ProductViewModelMap();
         ProductViewModel model = createOriginalProduct();
 
-        // sku 정보 업데이트 - 100원씩 가격 올리기
+        // sku 정보 업데이트
         List<Sku> updateSkuList = createUpdateSkuList(model);
         for (Sku sku : updateSkuList) {
-            sku.plusSalePrice(100);
+            sku.plusSalePrice(100); // 100원씩 가격 올리기
+            sku.minusStock(5); // 재고 5 감소
         }
         model.setUpdate(true);
         model.setUpdateSkuList(updateSkuList);
@@ -55,6 +56,7 @@ public class ProductEventCreateTests {
 
     private ProductViewModel createOriginalProduct() {
         ProductViewModel model = new ProductViewModel();
+        //TODO 이렇게 하면 안되고 event 처리가 같이 들어간 로직을 호출해서 사용해야 함 @@
         Product p = r.findOne(101);
 
         //TODO 필드 변경 시마다 해주지 않도록 객체 복사 기능 적용

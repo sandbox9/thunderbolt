@@ -6,7 +6,7 @@ import sandbox9.thunderbolt.entity.catalog.Catalog;
 import sandbox9.thunderbolt.entity.catalog.CatalogProduct;
 import sandbox9.thunderbolt.entity.catalog.repository.CatalogProductCustomRepository;
 import sandbox9.thunderbolt.entity.product.Product;
-import sandbox9.thunderbolt.product.event.processor.EventProcessor;
+import sandbox9.thunderbolt.product.event.process.EventProcessor;
 
 import java.util.List;
 

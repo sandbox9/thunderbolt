@@ -6,6 +6,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import sandbox9.thunderbolt.message.product.ProductEventKey;
 
 /**
  * Created by chanwook on 2014. 12. 6..
@@ -15,17 +16,17 @@ public class QueueConfiguration {
 
     @Value("${queue.hostname}")
     private String hostname;
+
     @Value("${queue.exchangename}")
     private String exchangeName;
-    @Value("${queue.queuename}")
-    private String queueName;
+
     @Value("${queue.username}")
     private String userName;
+
     @Value("${queue.password}")
     private String password;
 
-    @Value("${queue.routingkey}")
-    private String routingKey;
+    private String routingKey = ProductEventKey.ETC.name();
 
     @Bean
     ConnectionFactory connectionFactory() {

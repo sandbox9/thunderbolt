@@ -95,10 +95,6 @@ public class Sku implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public void plusSalePrice(int additionalPrice) {
-        setSalePrice(this.salePrice + additionalPrice);
-    }
-
     public long getSaleVolume() {
         return saleVolume;
     }
@@ -106,4 +102,13 @@ public class Sku implements Serializable {
     public void setSaleVolume(long saleVolume) {
         this.saleVolume = saleVolume;
     }
+
+    public void plusSalePrice(int additionalPrice) {
+        setSalePrice(this.salePrice + additionalPrice);
+    }
+
+    public void minusStock(long volume) {
+        setStock(this.stock - volume);
+    }
+
 }
