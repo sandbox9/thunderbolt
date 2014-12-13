@@ -34,20 +34,25 @@ public class ProductEventCreateTests {
 
     @Test
     public void sendProductChangeEvent() throws Exception {
-        ProductViewModelMap modelMap = new ProductViewModelMap();
-        ProductViewModel model = createOriginalProduct();
+        for (int i = 0; i < 5; i++) {
 
-        // sku 정보 업데이트
-        List<Sku> updateSkuList = createUpdateSkuList(model);
-        for (Sku sku : updateSkuList) {
-            sku.plusSalePrice(100); // 100원씩 가격 올리기
-            sku.minusStock(5); // 재고 5 감소
+            ProductViewModelMap modelMap = new ProductViewModelMap();
+            ProductViewModel model = createOriginalProduct();
+
+            // sku 정보 업데이트
+            List<Sku> updateSkuList = createUpdateSkuList(model);
+            for (Sku sku : updateSkuList) {
+                sku.plusSalePrice(100); // 100원씩 가격 올리기
+                sku.minusStock(5); // 재고 5 감소
+            }
+            model.setUpdate(true);
+            model.setUpdateSkuList(updateSkuList);
+            modelMap.addProduct(model);
+
+            c.updateProduct(modelMap);
+
+            Thread.sleep(1000L);
         }
-        model.setUpdate(true);
-        model.setUpdateSkuList(updateSkuList);
-        modelMap.addProduct(model);
-
-        c.updateProduct(modelMap);
     }
 
     private List<Sku> createUpdateSkuList(ProductViewModel model) {
