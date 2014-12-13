@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Catalog 페이지</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+    <h1>Catalog Page</h1>
+    <div>
+        <table>
+            <tr th:each="prd : ${catalog.productList}">
+                <td>이미지</td>
+                <td th:text="${prd.manufacturer}">제조사</td>
+                <td th:text="${prd.productName}">상품평</td>
+                <td th:text="${prd.displayName}">전시명</td>
+                <td th:text="${prd.standardSku.salePrice} + 원">가격</td>
+                <td th:text="${prd.standardSku.stock} + 개"> 재고</td>
+            </tr>
+        </table>
+    </div>
+
+
+</body>
+</html>

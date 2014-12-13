@@ -5,13 +5,14 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import sandbox9.thunderbolt.Application;
 import sandbox9.thunderbolt.admin.model.ProductViewModel;
 import sandbox9.thunderbolt.admin.model.ProductViewModelMap;
-import sandbox9.thunderbolt.admin.repository.ProductRepository;
-import sandbox9.thunderbolt.admin.service.ProductClientService;
 import sandbox9.thunderbolt.admin.web.ProductViewController;
 import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.Sku;
+import sandbox9.thunderbolt.entity.product.client.ProductApi;
+import sandbox9.thunderbolt.entity.product.repository.ProductRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public class ProductEventCreateTests {
     ProductRepository r;
 
     @Autowired
-    ProductClientService clientService;
+    ProductApi clientService;
 
     @Test
     public void sendProductChangeEvent() throws Exception {
@@ -61,7 +62,7 @@ public class ProductEventCreateTests {
     private ProductViewModel createOriginalProduct() {
         ProductViewModel model = new ProductViewModel();
         //TODO 이렇게 하면 안되고 event 처리가 같이 들어간 로직을 호출해서 사용해야 함 @@
-        Product p = clientService.getProduct(101);
+        Product p = clientService.getOne(101);
 
         //TODO 필드 변경 시마다 해주지 않도록 객체 복사 기능 적용
         model.setProductId(p.getProductId());

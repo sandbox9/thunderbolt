@@ -6,10 +6,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import sandbox9.thunderbolt.admin.model.ProductViewModelMap;
-import sandbox9.thunderbolt.admin.repository.ProductRepository;
-import sandbox9.thunderbolt.admin.service.ProductClientService;
 import sandbox9.thunderbolt.admin.service.ProductEventHandleService;
 import sandbox9.thunderbolt.entity.product.Product;
+import sandbox9.thunderbolt.entity.product.client.ProductApi;
+import sandbox9.thunderbolt.entity.product.repository.ProductRepository;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class ProductViewController {
     private ProductEventHandleService eventService;
 
     @Autowired
-    private ProductClientService clientService;
+    private ProductApi clientService;
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)
     public String viewProductPage(ModelMap model) {
