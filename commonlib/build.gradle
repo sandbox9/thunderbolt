@@ -11,7 +11,7 @@ repositories {
 dependencies {
 
     def springVersion = '4.0.8.RELEASE'
-    def springBootVersion = '1.1.9.RELEASE'
+    def springBootVersion = '1.2.0.RELEASE'
     def springDataMongodbVersion = '1.6.1.RELEASE'
     def springRabbitMQVersion = '1.4.0.RELEASE'
     def jacksonVersion = '2.4.0'

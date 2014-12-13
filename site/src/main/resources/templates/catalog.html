@@ -4,6 +4,10 @@
     <title>Catalog 페이지</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="refresh" content="2" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/css/material-wfont.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/css/material.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/css/ripples.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -15,12 +19,28 @@
                 <td th:text="${prd.manufacturer}">제조사</td>
                 <td th:text="${prd.productName}">상품평</td>
                 <td th:text="${prd.displayName}">전시명</td>
-                <td th:text="${prd.standardSku.salePrice} + 원">가격</td>
-                <td th:text="${prd.standardSku.stock} + 개"> 재고</td>
+                <td>
+                    <span th:text="${prd.standardSku.salePrice} + 원" class="label label-primary">가격</span>
+                </td>
+                <td th:if="${prd.standardSku.stock == 0}">
+                    <span th:text="일심품절" class="label label-danger">재고</span>
+                </td>
+                <td th:if="${prd.standardSku.stock != 0}">
+                    <span th:text="재고 + ${prd.standardSku.stock} + 개" class="label label-primary">재고</span>
+                </td>
             </tr>
         </table>
     </div>
 
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/js/material.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/js/ripples.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.material.init();
+        });
+    </script>
 
 </body>
 </html>

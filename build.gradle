@@ -15,9 +15,6 @@ ext {
     javaVersion = 1.7
 }
 
-sourceCompatibility = rootProject.ext.javaVersion
-targetCompatibility = rootProject.ext.javaVersion
-
 group = "sandbox9"
 version = "1.0-SNAPSHOT"
 

@@ -34,7 +34,7 @@ public class ProductEventCreateTests {
 
     @Test
     public void sendProductChangeEvent() throws Exception {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
 
             ProductViewModelMap modelMap = new ProductViewModelMap();
             ProductViewModel model = createOriginalProduct();

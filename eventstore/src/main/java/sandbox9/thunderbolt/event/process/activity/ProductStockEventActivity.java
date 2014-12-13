@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.Sku;
+import sandbox9.thunderbolt.event.repository.ProductEventRepository;
 import sandbox9.thunderbolt.message.product.EventCalculationType;
 import sandbox9.thunderbolt.message.product.ProductEventKey;
 import sandbox9.thunderbolt.message.product.ProductSkuEvent;
 import sandbox9.thunderbolt.message.product.ProductSkuStockEvent;
-import sandbox9.thunderbolt.event.repository.ProductEventRepository;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +19,7 @@ import java.util.Map;
  * Created by chanwook on 2014. 12. 11..
  */
 @Service("event.activity.stock")
-public class ProductStockEventActivity implements EventProcessActivity  {
+public class ProductStockEventActivity implements EventProcessActivity {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -53,7 +53,13 @@ public class ProductStockEventActivity implements EventProcessActivity  {
                 if (EventCalculationType.PLUS.equals(stockEvent.getCalculationType())) {
                     sku.setStock(stockSnapshot + stockEvent.getChangeValue());
                 } else if (EventCalculationType.MINUS.equals(stockEvent.getCalculationType())) {
-                    sku.setStock(stockSnapshot - stockEvent.getChangeValue());
+                    long stock = stockSnapshot - stockEvent.getChangeValue();
+                    if (stock < 0) {
+                        logger.warn(p.getProductId() + " 상품 " + sku.getSkuId() + " Sku의 재고가 - 값으로 변경되어 0으로 처리합니다.");
+                        sku.setStock(0);
+                    } else {
+                        sku.setStock(stock);
+                    }
                 }
                 logger.info("Sku 재고 변경 내역[" + p.getProductId() + " - " + sku.getSkuId() + "]" + stockSnapshot +
                         " => " + sku.getStock() + "(" + stockEvent.getCalculationType() + ", " + stockEvent.getChangeValue() + ")");

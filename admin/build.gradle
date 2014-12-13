@@ -2,8 +2,8 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'maven'
 apply plugin: 'spring-boot'
+apply plugin: 'idea'
 
-sourceCompatibility = 1.7
 version = '1.0-SNAPSHOT'
 
 war {
@@ -34,15 +34,23 @@ buildscript {
     }
 
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.0.RELEASE'
+        classpath 'org.springframework:springloaded:1.2.0.RELEASE'
+    }
+}
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
     }
 }
 
 dependencies {
-    compile project (':commonlib')
-    compile project (':model')
+    compile project(':commonlib')
+    compile project(':model')
 
-    def springBootVersion = '1.1.9.RELEASE'
+    def springBootVersion = '1.2.0.RELEASE'
     compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
     compile "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}"
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"

@@ -33,13 +33,13 @@ buildscript {
     }
 
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.0.RELEASE'
     }
 }
 
 dependencies {
     compile project (':commonlib')
 
-    def springBootVersion = '1.1.9.RELEASE'
+    def springBootVersion = '1.2.0.RELEASE'
     compile "org.springframework.boot:spring-boot-starter-amqp:${springBootVersion}"
 }
