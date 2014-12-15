@@ -28,9 +28,6 @@ public class LegoProductEvent {
 
     @Test
     public void createEvent() throws Exception {
-        m.dropCollection(ProductSkuPriceEvent.class);
-        m.dropCollection(ProductSkuStockEvent.class);
-
         // 가격 이벤트
         m.save(new ProductSkuPriceEvent(LEGO_PRODUCT_1, SKU_1_1, PLUS, 10, new Date()));
 

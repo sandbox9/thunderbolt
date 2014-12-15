@@ -1,5 +1,7 @@
 package sandbox9.thunderbolt.message.product;
 
+import sandbox9.thunderbolt.entity.product.Product;
+
 import java.io.Serializable;
 
 /**
@@ -12,4 +14,6 @@ public interface ProductSkuEvent extends Serializable {
     int getProductId();
 
     int getSkuId();
+
+    void updateProduct(Product product);
 }

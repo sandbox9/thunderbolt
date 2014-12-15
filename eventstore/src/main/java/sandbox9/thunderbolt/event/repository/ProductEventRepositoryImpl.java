@@ -41,14 +41,7 @@ public class ProductEventRepositoryImpl implements ProductEventRepository {
     public Map<Integer, List<ProductSkuEvent>> findEventById(List<Integer> idList, ProductEventKey eventKey) {
         Query query = query(where("productId").in(idList));
         //TODO 분리해내기
-        Class<?> eventClass = null;
-        if (ProductEventKey.PRICE.equals(eventKey)) {
-            eventClass = ProductSkuPriceEvent.class;
-        } else if (ProductEventKey.STOCK.equals(eventKey)) {
-            eventClass = ProductSkuStockEvent.class;
-        } else {
-            throw new IllegalArgumentException(eventKey + "에 해당하는 이벤트 클래스가 존재하지 않습니다.");
-        }
+        Class<?> eventClass = ProductEventKey.getEventClass(eventKey);
         List<?> eventList = t.find(query, eventClass);
 
         Map<Integer, List<ProductSkuEvent>> eventMap = new HashMap<Integer, List<ProductSkuEvent>>();
@@ -64,6 +57,18 @@ public class ProductEventRepositoryImpl implements ProductEventRepository {
             }
         }
         return eventMap;
+    }
+
+    @Override
+    public List<?> findEvent(ProductEventKey eventKey) {
+        Class<?> eventClass = ProductEventKey.getEventClass(eventKey);
+        List<?> eventList = t.findAll(eventClass);
+        return eventList;
+    }
+
+    @Override
+    public void removeEvent(ProductSkuEvent event) {
+        t.remove(event);
     }
 
     @Override

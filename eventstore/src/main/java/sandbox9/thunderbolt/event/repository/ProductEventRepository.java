@@ -20,4 +20,8 @@ public interface ProductEventRepository {
     void save(ProductSkuPriceEvent event);
 
     void save(ProductSkuStockEvent event);
+
+    List<?> findEvent(ProductEventKey eventKey);
+
+    void removeEvent(ProductSkuEvent event);
 }

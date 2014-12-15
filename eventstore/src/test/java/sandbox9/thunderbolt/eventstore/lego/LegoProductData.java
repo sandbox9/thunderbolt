@@ -35,15 +35,13 @@ public class LegoProductData {
 
     @Test
     public void createOneProductData() throws Exception {
-        r.deleteAll();
-
-        final int legoCategoryId = 100;
+        final int legoCategoryId = 101;
         final String manufacturer = "LEGO";
 
-        // http://shop.lego.com/en-US/Imperial-Star-Destroyer-75055?p=75055&track=checkprice
+        // http://shop.lego.com/en-US/Imperial-Star-Destroyer-75055?p1=75055&track=checkprice
         String image1 = "http://cache.lego.com/r/www/r/starwars/-/media/franchises/lego%20starwars/products/75055/sw_1hy_75055_star_destroyer_compile_v004_1024k.mp4?l.r2=326351823";
         String image2 = "http://cache.lego.com/r/www/r/starwars/-/media/franchises/lego%20starwars/products/75055/prod_product_retina_1224x688_75055.jpg?l.r2=-1055819158";
-        Product p = new Product(LEGO_PRODUCT_1, "임페리얼 스타 디스트로이어™", "",
+        Product p1 = new Product(LEGO_PRODUCT_1, "임페리얼 스타 디스트로이어™", "",
                 "제국의 힘을 느껴 보세요! 제국의 스타 디스트로이어™는 제국 함대의 상징적 함선이에요. 뒤쪽의 손잡이를 돌려 동시 작동되는 " +
                         "8개의 대포를 조준하고 본체 상단에 장착된 스프링식 슈터를 발사하세요. 상단 덮개를 들어 올리면 어디서도 볼 수 " +
                         "없는 팰퍼틴 황제의 홀로그램, 승무원용 회전 의자, 무기고, 함교, 제어판 등이 배치된 놀랍도록 정교한 실내가 드러납니다. " +
@@ -52,11 +50,11 @@ public class LegoProductData {
                         "다양한 무기로 무장한 미니피겨 6개(다스 베이더™, 제국군 장교, 스톰트루퍼™ 2개, 제국군 승무원, 제국군 네이비 트루퍼™)" +
                         "와 새롭고 독특한 피겨 2개(팰퍼틴 황제 홀로그램, 마우스 드로이드™)가 들어 있습니다.",
                 manufacturer, legoCategoryId, new String[]{image1, image2});
-        p.addSku(new Sku(SKU_1_1, "기본박스", "기본박스", 19999L, 100, 0));
-        p.addSku(new Sku(SKU_1_2, "제다이 피규어 추가 박스", "오비완 등 제다이 피규어 10종을 추가해줍니다", 22999L, 100, 0));
-        p.addSku(new Sku(SKU_1_3, "레고 정리 박스 추가", "레고 블럭을 정리할 수 있는 박스를 추가해줍니다", 20999L, 100, 0));
-        p.setStandardSkuId(SKU_1_1);
-        r.save(p);
+        p1.addSku(new Sku(SKU_1_1, "기본박스", "기본박스", 19999L, 100, 0));
+        p1.addSku(new Sku(SKU_1_2, "제다이 피규어 추가 박스", "오비완 등 제다이 피규어 10종을 추가해줍니다", 22999L, 100, 0));
+        p1.addSku(new Sku(SKU_1_3, "레고 정리 박스 추가", "레고 블럭을 정리할 수 있는 박스를 추가해줍니다", 20999L, 100, 0));
+        p1.setStandardSkuId(SKU_1_1);
+        r.save(p1);
 
         image1 = "http://cache.lego.com/r/www/r/starwars/-/media/franchises/lego%20starwars/products/75021/prod_product_main_retina_1224x688_75021.jpg?l.r2=95154826";
         image2 = "http://cache.lego.com/r/www/r/starwars/-/media/franchises/lego%20starwars/products/75021/prod_packaging_main_retina_1224x688_75021.jpg?l.r2=1631631879";

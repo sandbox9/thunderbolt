@@ -1,4 +1,4 @@
-package sandbox9.thunderbolt.eventstore;
+package sandbox9.thunderbolt.eventstore.helloworld;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

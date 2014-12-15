@@ -38,8 +38,6 @@ public class LegoCatalogData {
 
     @Test
     public void createProductData() throws Exception {
-        catalogProductRepository.deleteAll();
-
         //TODO catalogid와 categoryid는 매핑해서 알도록 분리
         String catalogId = "C1011";
         String displayCategoryId = "D1011";
