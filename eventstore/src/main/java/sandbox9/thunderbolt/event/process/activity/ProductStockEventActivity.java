@@ -28,7 +28,7 @@ public class ProductStockEventActivity implements EventProcessActivity {
     public void handleActivity(Object eventSeed) {
         List<Product> productList = (List<Product>) eventSeed;
 
-        // TODO 별도 컴포넌트로 설계해 빼내기. CatalogProduct와 통합
+        // TODO 별도 컴포넌트로 설계해 빼내기
         Map<Integer, List<ProductSkuEvent>> eventMap = er.findEvent(productList, ProductEventKey.STOCK);
 
         for (Product p : productList) {
