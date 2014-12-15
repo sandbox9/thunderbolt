@@ -1,7 +1,6 @@
 package sandbox9.thunderbolt.entity.product;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by chanwook on 2014. 12. 5..
@@ -22,19 +21,16 @@ public class Sku implements Serializable {
     // 판매량: 몇 개 팔았냐. 현재 몰에서 상품을 몇 개 주문 처리 했는지
     private long saleVolume;
 
-    private Date createdDate;
-
     public Sku() {
     }
 
-    public Sku(int skuId, String skuName, String displayName, long salePrice, long stock, long saleVolume, Date createdDate) {
+    public Sku(int skuId, String skuName, String displayName, long salePrice, int stock, int saleVolume) {
         this.skuId = skuId;
         this.skuName = skuName;
         this.displayName = displayName;
         this.salePrice = salePrice;
-        this.saleVolume = saleVolume;
         this.stock = stock;
-        this.createdDate = createdDate;
+        this.saleVolume = saleVolume;
     }
 
     public Sku(Sku source) {
@@ -44,7 +40,6 @@ public class Sku implements Serializable {
         this.salePrice = source.getSalePrice();
         this.saleVolume = source.getSaleVolume();
         this.stock = source.getStock();
-        this.createdDate = source.getCreatedDate();
     }
 
     public int getSkuId() {
@@ -85,14 +80,6 @@ public class Sku implements Serializable {
 
     public void setStock(long stock) {
         this.stock = stock;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
     }
 
     public long getSaleVolume() {

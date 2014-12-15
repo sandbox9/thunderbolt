@@ -26,6 +26,8 @@ public class Product implements Serializable {
 
     private List<Sku> skuList = new ArrayList<Sku>();
 
+    private String[] images;
+
     // 제조사
     @Indexed
     private String manufacturer;
@@ -42,13 +44,14 @@ public class Product implements Serializable {
     }
 
     public Product(int productId, String productName, String displayName, String description,
-                   String manufacturer, int managementCategoryId) {
+                   String manufacturer, int managementCategoryId, String[] images) {
         this.productId = productId;
         this.productName = productName;
         this.displayName = displayName;
         this.description = description;
         this.manufacturer = manufacturer;
         this.managementCategoryId = managementCategoryId;
+        this.images = images;
     }
 
     public int getProductId() {
@@ -119,6 +122,14 @@ public class Product implements Serializable {
         this.displayName = displayName;
     }
 
+    public String[] getImages() {
+        return images;
+    }
+
+    public void setImages(String[] images) {
+        this.images = images;
+    }
+
     public Sku getSku(int skuId) {
         for (Sku sku : skuList) {
             if (skuId == sku.getSkuId()) {
@@ -126,21 +137,6 @@ public class Product implements Serializable {
             }
         }
         return null;
-    }
-
-    /**
-     * Sku 중에서 가장 낮은 가격을 반환
-     *
-     * @return
-     */
-    public long seekLowestSalePrice() {
-        long lowestPrice = Long.MAX_VALUE;
-        for (Sku sku : skuList) {
-            if (lowestPrice > sku.getSalePrice()) {
-                lowestPrice = sku.getSalePrice();
-            }
-        }
-        return lowestPrice;
     }
 
     @JsonIgnore

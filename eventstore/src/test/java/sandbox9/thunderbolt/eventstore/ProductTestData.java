@@ -11,8 +11,6 @@ import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.Sku;
 import sandbox9.thunderbolt.entity.product.repository.ProductRepository;
 
-import java.util.Date;
-
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -34,10 +32,10 @@ public class ProductTestData {
         r.deleteAll();
 
         int productId = 101;
-        Product p = new Product(productId, "2014년 맥북프로 Mid 신형", "-", "설명..블라블라..", "Apple Inc.", 33568);
-        p.addSku(new Sku(1001, "13인치 기본형", "최신 애플 13인치 기본형 (신상)", 1000L, 100L, 20L, new Date()));
-        p.addSku(new Sku(1002, "15인치 기본형", "최신 애플 15인치 기본형 (신상)", 2000L, 100L, 100L, new Date()));
-        p.addSku(new Sku(1003, "15인치 고급형", "최신 애플 15인치 고급형 (신상)", 3000L, 100L, 500L, new Date()));
+        Product p = new Product(productId, "2014년 맥북프로 Mid 신형", "-", "설명..블라블라..", "Apple Inc.", 33568, new String[]{});
+        p.addSku(new Sku(1001, "13인치 기본형", "최신 애플 13인치 기본형 (신상)", 1000L, 100, 20));
+        p.addSku(new Sku(1002, "15인치 기본형", "최신 애플 15인치 기본형 (신상)", 2000L, 100, 100));
+        p.addSku(new Sku(1003, "15인치 고급형", "최신 애플 15인치 고급형 (신상)", 3000L, 100, 500));
         p.setStandardSkuId(1001);
 
         r.save(p);
