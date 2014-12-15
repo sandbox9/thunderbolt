@@ -1,28 +1,38 @@
 package sandbox9.thunderbolt.event.process;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.BeanNameAware;
 import sandbox9.thunderbolt.event.process.activity.EventProcessActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by chanwook on 2014. 12. 12..
  */
-@Service
-public class SimpleEventProcessor implements EventProcessor {
-    //TODO FW 기능으로 변경
-    @Autowired
-    @Qualifier("event.activity.price")
-    private EventProcessActivity pricingProcessor;
+public class SimpleEventProcessor implements EventProcessor, BeanNameAware {
 
-    @Autowired
-    @Qualifier("event.activity.stock")
-    private EventProcessActivity sotckProcessor;
+    private List<EventProcessActivity> activities = new ArrayList<EventProcessActivity>();
+
+    private String beanName;
 
     @Override
     public void process(Object eventSeed) {
-        //TODO FW 기능으로 변경
-        pricingProcessor.handleActivity(eventSeed);
-        sotckProcessor.handleActivity(eventSeed);
+
+        if (activities == null || activities.size() == 0) {
+            throw new RuntimeException(beanName + " Processor에 EventProcessActivity가 설정되어 있지 않습니다!");
+        }
+
+        for (EventProcessActivity activity : this.activities) {
+            activity.handleActivity(eventSeed);
+        }
+    }
+
+    @Override
+    public void setBeanName(String name) {
+        this.beanName = name;
+    }
+
+    public void addActivity(EventProcessActivity activity) {
+        this.activities.add(activity);
     }
 }

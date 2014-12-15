@@ -3,14 +3,13 @@ package sandbox9.thunderbolt.event.process.activity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.Sku;
+import sandbox9.thunderbolt.event.repository.ProductEventRepository;
 import sandbox9.thunderbolt.message.product.EventCalculationType;
 import sandbox9.thunderbolt.message.product.ProductEventKey;
 import sandbox9.thunderbolt.message.product.ProductSkuEvent;
 import sandbox9.thunderbolt.message.product.ProductSkuPriceEvent;
-import sandbox9.thunderbolt.event.repository.ProductEventRepository;
 
 import java.util.List;
 import java.util.Map;
@@ -18,7 +17,6 @@ import java.util.Map;
 /**
  * Created by chanwook on 2014. 12. 11..
  */
-@Service("event.activity.price")
 public class ProductPriceEventActivity implements EventProcessActivity {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());

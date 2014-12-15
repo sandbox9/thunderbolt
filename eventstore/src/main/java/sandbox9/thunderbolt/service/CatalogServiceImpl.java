@@ -17,14 +17,14 @@ import java.util.List;
 public class CatalogServiceImpl implements CatalogService {
 
     @Autowired
-    private CatalogProductCustomRepository repository;
+    private CatalogProductCustomRepository catalogRepository;
 
     @Autowired
     private EventProcessor eventProcessor;
 
     @Override
     public Catalog find(String catalogId, int pageNumber, int pageSize) {
-        List<CatalogProduct> productList = repository.find(catalogId, pageNumber, pageSize);
+        List<CatalogProduct> productList = catalogRepository.find(catalogId, pageNumber, pageSize);
 
         Catalog catalog = new Catalog(catalogId, productList);
 

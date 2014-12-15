@@ -3,7 +3,6 @@ package sandbox9.thunderbolt.event.process.activity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.Sku;
 import sandbox9.thunderbolt.event.repository.ProductEventRepository;
@@ -18,7 +17,6 @@ import java.util.Map;
 /**
  * Created by chanwook on 2014. 12. 11..
  */
-@Service("event.activity.stock")
 public class ProductStockEventActivity implements EventProcessActivity {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
