@@ -1,4 +1,4 @@
-package sandbox9.thunderbolt.eventstore;
+package sandbox9.thunderbolt.eventstore.lego;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +12,7 @@ import sandbox9.thunderbolt.message.product.ProductSkuStockEvent;
 
 import java.util.Date;
 
+import static sandbox9.thunderbolt.eventstore.lego.LegoProductData.*;
 import static sandbox9.thunderbolt.message.product.EventCalculationType.MINUS;
 import static sandbox9.thunderbolt.message.product.EventCalculationType.PLUS;
 
@@ -20,7 +21,7 @@ import static sandbox9.thunderbolt.message.product.EventCalculationType.PLUS;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = EventStoreApplication.class)
-public class ProductEventData {
+public class LegoProductEvent {
 
     @Autowired
     MongoTemplate m;
@@ -28,16 +29,14 @@ public class ProductEventData {
     @Test
     public void createEvent() throws Exception {
         m.dropCollection(ProductSkuPriceEvent.class);
+        m.dropCollection(ProductSkuStockEvent.class);
 
         // 가격 이벤트
-
-        m.save(new ProductSkuPriceEvent(101, 1001, PLUS, 100, new Date()));
-        m.save(new ProductSkuPriceEvent(101, 1002, PLUS, 100, new Date()));
-        m.save(new ProductSkuPriceEvent(101, 1003, PLUS, 100, new Date()));
+        m.save(new ProductSkuPriceEvent(LEGO_PRODUCT_1, SKU_1_1, PLUS, 10, new Date()));
 
         // 재고 이벤트
-        m.save(new ProductSkuStockEvent(101, 1001, MINUS, 5, new Date()));
-        m.save(new ProductSkuStockEvent(101, 1002, MINUS, 5, new Date()));
-        m.save(new ProductSkuStockEvent(101, 1003, MINUS, 5, new Date()));
+        m.save(new ProductSkuStockEvent(LEGO_PRODUCT_1, SKU_1_1, MINUS, 10, new Date()));
+        m.save(new ProductSkuStockEvent(LEGO_PRODUCT_1, SKU_1_2, MINUS, 7, new Date()));
+        m.save(new ProductSkuStockEvent(LEGO_PRODUCT_1, SKU_1_3, MINUS, 3, new Date()));
     }
 }

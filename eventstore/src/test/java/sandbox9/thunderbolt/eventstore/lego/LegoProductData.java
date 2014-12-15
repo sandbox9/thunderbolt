@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import sandbox9.thunderbolt.Application;
+import sandbox9.thunderbolt.EventStoreApplication;
 import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.Sku;
 import sandbox9.thunderbolt.entity.product.repository.ProductRepository;
@@ -15,7 +15,7 @@ import sandbox9.thunderbolt.entity.product.repository.ProductRepository;
  * Created by chanwook on 2014. 12. 6..
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
+@SpringApplicationConfiguration(classes = EventStoreApplication.class)
 public class LegoProductData {
 
     @Autowired
@@ -27,6 +27,11 @@ public class LegoProductData {
     public static final int LEGO_PRODUCT_1 = 75055;
     public static final int LEGO_PRODUCT_2 = 75021;
     public static final int LEGO_PRODUCT_3 = 75049;
+    public static final int SKU_1_1 = 10011;
+    public static final int SKU_1_2 = 10012;
+    public static final int SKU_1_3 = 10013;
+    public static final int SKU_2_1 = 10021;
+    public static final int SKU_3_1 = 10031;
 
     @Test
     public void createOneProductData() throws Exception {
@@ -36,7 +41,6 @@ public class LegoProductData {
         final String manufacturer = "LEGO";
 
         // http://shop.lego.com/en-US/Imperial-Star-Destroyer-75055?p=75055&track=checkprice
-        int skuId = 10001;
         String image1 = "http://cache.lego.com/r/www/r/starwars/-/media/franchises/lego%20starwars/products/75055/sw_1hy_75055_star_destroyer_compile_v004_1024k.mp4?l.r2=326351823";
         String image2 = "http://cache.lego.com/r/www/r/starwars/-/media/franchises/lego%20starwars/products/75055/prod_product_retina_1224x688_75055.jpg?l.r2=-1055819158";
         Product p = new Product(LEGO_PRODUCT_1, "임페리얼 스타 디스트로이어™", "",
@@ -48,11 +52,12 @@ public class LegoProductData {
                         "다양한 무기로 무장한 미니피겨 6개(다스 베이더™, 제국군 장교, 스톰트루퍼™ 2개, 제국군 승무원, 제국군 네이비 트루퍼™)" +
                         "와 새롭고 독특한 피겨 2개(팰퍼틴 황제 홀로그램, 마우스 드로이드™)가 들어 있습니다.",
                 manufacturer, legoCategoryId, new String[]{image1, image2});
-        p.addSku(new Sku(skuId, "기본박스", "기본박스", 19999L, 100, 0));
-        p.setStandardSkuId(skuId);
+        p.addSku(new Sku(SKU_1_1, "기본박스", "기본박스", 19999L, 100, 0));
+        p.addSku(new Sku(SKU_1_2, "제다이 피규어 추가 박스", "오비완 등 제다이 피규어 10종을 추가해줍니다", 22999L, 100, 0));
+        p.addSku(new Sku(SKU_1_3, "레고 정리 박스 추가", "레고 블럭을 정리할 수 있는 박스를 추가해줍니다", 20999L, 100, 0));
+        p.setStandardSkuId(SKU_1_1);
         r.save(p);
 
-        skuId = 10002;
         image1 = "http://cache.lego.com/r/www/r/starwars/-/media/franchises/lego%20starwars/products/75021/prod_product_main_retina_1224x688_75021.jpg?l.r2=95154826";
         image2 = "http://cache.lego.com/r/www/r/starwars/-/media/franchises/lego%20starwars/products/75021/prod_packaging_main_retina_1224x688_75021.jpg?l.r2=1631631879";
         Product p2 = new Product(LEGO_PRODUCT_2, "리퍼블릭 건쉽™", "",
@@ -63,11 +68,10 @@ public class LegoProductData {
                         "오비완 캐노비, 아나킨 스카이워커, 파드메 아미달라, 클론 트루퍼™ 선장, 클론 트루퍼, " +
                         "수퍼 배틀 드로이드 2개 등 무기로 무장한 미니피겨 7개가 들어 있습니다.",
                 manufacturer, legoCategoryId, new String[]{image1, image2});
-        p2.addSku(new Sku(skuId, "기본박스", "기본박스", 12999L, 100, 0));
-        p2.setStandardSkuId(skuId);
+        p2.addSku(new Sku(SKU_2_1, "기본박스", "기본박스", 12999L, 100, 0));
+        p2.setStandardSkuId(SKU_2_1);
         r.save(p2);
 
-        skuId = 10003;
         image1 = "http://cache.lego.com/r/www/r/starwars/-/media/franchises/lego%20starwars/products/75049/sw_1hy_75049_snowspeeder_compile_v005_1024k.mp4?l.r2=587623545";
         image2 = "http://cache.lego.com/r/www/r/starwars/-/media/franchises/lego%20starwars/products/75049/prod_packaging_retina_1224x688_75049.jpg?l.r2=1302580114";
         Product p3 = new Product(LEGO_PRODUCT_3, "스노우스피더™", "",
@@ -78,8 +82,8 @@ public class LegoProductData {
                         "스타워즈 에피소드 V 제국의 역습에 등장하는 유명한 호스의 전투를 재현해 보세요! " +
                         "다양한 무기로 무장한 미니피겨 3개(루크 스카이워커™, 다크 랄터™, 스노우트루퍼™)가 들어 있습니다.",
                 manufacturer, legoCategoryId, new String[]{image1, image2});
-        p3.addSku(new Sku(skuId, "기본박스", "기본박스", 2999L, 100, 0));
-        p3.setStandardSkuId(skuId);
+        p3.addSku(new Sku(SKU_3_1, "기본박스", "기본박스", 2999L, 100, 0));
+        p3.setStandardSkuId(SKU_3_1);
         r.save(p3);
     }
 }

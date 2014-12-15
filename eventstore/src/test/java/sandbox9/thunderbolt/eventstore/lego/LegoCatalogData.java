@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import sandbox9.thunderbolt.Application;
+import sandbox9.thunderbolt.EventStoreApplication;
 import sandbox9.thunderbolt.entity.catalog.CatalogProduct;
 import sandbox9.thunderbolt.entity.catalog.repository.CatalogProductCustomRepository;
 import sandbox9.thunderbolt.entity.catalog.repository.CatalogProductRepository;
@@ -21,7 +21,7 @@ import static sandbox9.thunderbolt.eventstore.lego.LegoProductData.*;
  * Created by chanwook on 2014. 12. 6..
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
+@SpringApplicationConfiguration(classes = EventStoreApplication.class)
 public class LegoCatalogData {
 
     @Autowired

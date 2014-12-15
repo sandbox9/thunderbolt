@@ -9,8 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @ComponentScan(basePackages = "sandbox9.thunderbolt")
 @EnableAutoConfiguration
-public class Application {
+public class SiteApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(SiteApplication.class, args);
     }
 }
