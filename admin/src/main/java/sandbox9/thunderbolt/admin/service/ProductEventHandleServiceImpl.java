@@ -8,16 +8,16 @@ import org.springframework.stereotype.Service;
 import sandbox9.thunderbolt.admin.model.ProductViewModel;
 import sandbox9.thunderbolt.admin.model.ProductViewModelMap;
 import sandbox9.thunderbolt.entity.product.Sku;
-import sandbox9.thunderbolt.message.product.ProductEventKey;
-import sandbox9.thunderbolt.message.product.ProductSkuPriceEvent;
-import sandbox9.thunderbolt.message.product.ProductSkuStockEvent;
+import sandbox9.thunderbolt.event.product.message.ProductEvent;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static sandbox9.thunderbolt.message.product.EventCalculationType.MINUS;
-import static sandbox9.thunderbolt.message.product.EventCalculationType.PLUS;
+import static sandbox9.thunderbolt.event.product.message.EventCalculationType.MINUS;
+import static sandbox9.thunderbolt.event.product.message.EventCalculationType.PLUS;
+import static sandbox9.thunderbolt.event.product.message.ProductEvent.ProductEventType.PRICE;
+import static sandbox9.thunderbolt.event.product.message.ProductEvent.ProductEventType.STOCK;
 
 /**
  * Created by chanwook on 2014. 12. 8..
@@ -32,8 +32,7 @@ public class ProductEventHandleServiceImpl implements ProductEventHandleService 
 
     @Override
     public void handle(ProductViewModelMap model) {
-        List<ProductSkuPriceEvent> priceEventList = new ArrayList<ProductSkuPriceEvent>();
-        List<ProductSkuStockEvent> stockEventList = new ArrayList<ProductSkuStockEvent>();
+        List<ProductEvent> eventList = new ArrayList<ProductEvent>();
 
         // 우선 상품 화면 모델에 있는 데이터를 가지고 바로 사용하자. 나중에 변경 필요
         for (ProductViewModel m : model.getProductList()) {
@@ -45,55 +44,54 @@ public class ProductEventHandleServiceImpl implements ProductEventHandleService 
                     Sku original = m.getSku(update.getSkuId());
 
                     //TODO 추상화
-                    handleSalePriceEvent(priceEventList, update, original, m.getProductId());
-                    handleStockEvent(stockEventList, update, original, m.getProductId());
+                    handleSalePriceEvent(eventList, update, original, m.getProductId());
+                    handleStockEvent(eventList, update, original, m.getProductId());
                 }
-                logger.debug("상품 정보 이벤트 생성 완료: " + priceEventList.size() + "개 이벤트 생성");
+                logger.debug("상품 정보 이벤트 생성 완료: " + eventList.size() + "개 이벤트 생성");
             } else {
                 logger.debug("상품 정보 변경이 발생하지 않았습니다.");
             }
         }
 
         //TODO 추상화
-        produceProductChangeEvent(priceEventList, stockEventList);
+        produceProductChangeEvent(eventList);
     }
 
-    private void handleStockEvent(List<ProductSkuStockEvent> eventList, Sku update, Sku original, int productId) {
+    private void handleStockEvent(List<ProductEvent> eventList, Sku update, Sku original, int productId) {
         if (original.getStock() > update.getStock()) {
             // 재고가 줄었을 때...
-            ProductSkuStockEvent event = new ProductSkuStockEvent(productId, original.getSkuId(), MINUS, original.getStock() - update.getStock(), new Date());
+            ProductEvent event = new ProductEvent(productId, original.getSkuId(),
+                    original.getStock() - update.getStock(), STOCK, MINUS, new Date());
             eventList.add(event);
         } else if (original.getStock() < update.getStock()) {
-            ProductSkuStockEvent event = new ProductSkuStockEvent(productId, original.getSkuId(), PLUS, update.getStock() - original.getStock(), new Date());
+            ProductEvent event = new ProductEvent(productId, original.getSkuId(),
+                    update.getSalePrice() - original.getSalePrice(), STOCK, PLUS, new Date());
             eventList.add(event);
         } else {
             logger.debug("상품 정보가 변경 됐지만 재고는 변하지 않았습니다.");
         }
     }
 
-    private void handleSalePriceEvent(List<ProductSkuPriceEvent> eventList, Sku update, Sku original, int productId) {
+    private void handleSalePriceEvent(List<ProductEvent> eventList, Sku update, Sku original, int productId) {
         if (original.getSalePrice() > update.getSalePrice()) {
             // 판매가를 내렸을 때...
-            ProductSkuPriceEvent event = new ProductSkuPriceEvent(productId, original.getSkuId(), MINUS, original.getSalePrice() - update.getSalePrice(), new Date());
+            ProductEvent event = new ProductEvent(productId, original.getSkuId(),
+                    original.getSalePrice() - update.getSalePrice(), PRICE, MINUS, new Date());
             eventList.add(event);
         } else if (original.getSalePrice() < update.getSalePrice()) {
             // 판매가를 올렸을 때...
-            ProductSkuPriceEvent event = new ProductSkuPriceEvent(productId, original.getSkuId(), PLUS, update.getSalePrice() - original.getSalePrice(), new Date());
+            ProductEvent event = new ProductEvent(productId, original.getSkuId(),
+                    update.getSalePrice() - original.getSalePrice(), PRICE, PLUS, new Date());
             eventList.add(event);
         } else {
             logger.debug("상품 정보가 변경 됐지만 가격은 변하지 않았습니다.");
         }
     }
 
-    private void produceProductChangeEvent(List<ProductSkuPriceEvent> priceEventList, List<ProductSkuStockEvent> stockEventList) {
-        for (ProductSkuPriceEvent e : priceEventList) {
-            logger.info("[상품 가격 이벤트 전송] " + e);
-            rabbitTemplate.convertAndSend(ProductEventKey.PRICE.name(), e);
-        }
-
-        for (ProductSkuStockEvent e : stockEventList) {
-            logger.info("[상품 재고 이벤트 전송] " + e);
-            rabbitTemplate.convertAndSend(ProductEventKey.STOCK.name(), e);
+    private void produceProductChangeEvent(List<ProductEvent> eventList) {
+        for (ProductEvent e : eventList) {
+            logger.info("[상품 이벤트 전송] " + e);
+            rabbitTemplate.convertAndSend(e);
         }
     }
 }
