@@ -7,7 +7,7 @@ apply plugin: 'idea'
 version = '1.0-SNAPSHOT'
 
 war {
-    baseName = "product-api"
+    baseName = "api"
 }
 
 repositories {
@@ -50,7 +50,4 @@ dependencies {
     compile project(':commonlib')
     compile project(':model')
 
-    def springBootVersion = '1.2.0.RELEASE'
-    compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
 }

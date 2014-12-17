@@ -1,7 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-sourceCompatibility = 1.7
 version = '1.0-SNAPSHOT'
 
 
@@ -39,7 +38,4 @@ buildscript {
 
 dependencies {
     compile project (':commonlib')
-
-    def springBootVersion = '1.2.0.RELEASE'
-    compile "org.springframework.boot:spring-boot-starter-amqp:${springBootVersion}"
 }

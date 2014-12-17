@@ -24,9 +24,9 @@ public class ProductPriceEventHandler implements ProductEventHandler {
         }
         long beforePrice = sku.getSalePrice();
         if (EventCalculationType.PLUS.equals(event.getCalculationType())) {
-            sku.setSalePrice(beforePrice + (Long) event.getValue());
+            sku.setSalePrice(beforePrice + (Integer) event.getValue());
         } else if (EventCalculationType.MINUS.equals(event.getCalculationType())) {
-            sku.setSalePrice(beforePrice - (Long) event.getValue());
+            sku.setSalePrice(beforePrice - (Integer) event.getValue());
         }
         logger.info("Sku 가격 변경 내역[" + product.getProductId() + " - " + sku.getSkuId() + "]" + beforePrice +
                 " => " + sku.getSalePrice() + "(" + event.getCalculationType() + ", " + event.getValue() + ")");

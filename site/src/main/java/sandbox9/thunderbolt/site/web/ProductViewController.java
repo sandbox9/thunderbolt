@@ -21,6 +21,6 @@ public class ProductViewController {
     public String viewCatalog(@PathVariable int productId, ModelMap model) {
         Product product = productApi.getOne(productId);
         model.put("product", product);
-        return "/product";
+        return "productView";
     }
 }

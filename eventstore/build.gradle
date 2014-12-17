@@ -50,10 +50,6 @@ dependencies {
     compile project(':commonlib')
     compile project(':model')
 
-    def springBootVersion = '1.2.0.RELEASE'
-    compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-    testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
-
     def quartzVersion = '2.2.1'
     compile "org.quartz-scheduler:quartz:${quartzVersion}"
 }

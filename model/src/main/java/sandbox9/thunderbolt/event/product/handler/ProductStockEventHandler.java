@@ -24,9 +24,9 @@ public class ProductStockEventHandler implements ProductEventHandler {
         }
         long stockSnapshot = sku.getStock();
         if (EventCalculationType.PLUS.equals(event.getCalculationType())) {
-            sku.setStock(stockSnapshot + (Long) event.getValue());
+            sku.setStock(stockSnapshot + (Integer) event.getValue());
         } else if (EventCalculationType.MINUS.equals(event.getCalculationType())) {
-            long stock = stockSnapshot - (Long) event.getValue();
+            long stock = stockSnapshot - (Integer) event.getValue();
             if (stock < 0) {
                 logger.warn(product.getProductId() + " 상품 " + sku.getSkuId() + " Sku의 재고가 - 값으로 변경되어 0으로 처리합니다.");
                 sku.setStock(0);
