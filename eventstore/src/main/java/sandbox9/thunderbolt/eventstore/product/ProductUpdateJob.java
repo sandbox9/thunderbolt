@@ -3,6 +3,8 @@ package sandbox9.thunderbolt.eventstore.product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import sandbox9.thunderbolt.entity.catalog.CatalogProduct;
+import sandbox9.thunderbolt.entity.catalog.repository.CatalogProductRepository;
 import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.repository.ProductRepository;
 import sandbox9.thunderbolt.event.product.ProductEventStore;
@@ -13,7 +15,6 @@ import java.util.List;
 
 /**
  * 이벤트 정보를 Mongo snapshot DB로 동기화 진행
- * <p/>
  * <p/>
  * Created by chanwook on 2014. 12. 15..
  */
@@ -26,6 +27,9 @@ public class ProductUpdateJob {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private CatalogProductRepository catalogProductRepository;
 
     @Autowired
     private ProductEventStore eventStore;
@@ -52,10 +56,19 @@ public class ProductUpdateJob {
                 info.increaseTry();
 
                 // 건건히 상품을 조회하고 반영. 그러니까 중간 처리 결과에 대한 조치가 필요하다
+                // update product snapshot (TODO: refactoring)
                 Product product = productRepository.findOne(event.getProductId());
                 eventStore.process(event, product);
-                eventRepository.delete(event);
                 productRepository.save(product);
+
+                // update catalog snapshot (TODO: refactoring)
+                CatalogProduct catalogProduct =
+                        catalogProductRepository.find(event.getProductId(), event.getSkuId());
+                Product originalProduct = catalogProduct.createOriginalProduct();
+                eventStore.process(event, originalProduct);
+                catalogProduct.setStandardSku(originalProduct.getStandardSku());
+                catalogProductRepository.save(catalogProduct);
+                eventRepository.delete(event);
 
                 info.increaseSuccess();
             } catch (Exception ex) {

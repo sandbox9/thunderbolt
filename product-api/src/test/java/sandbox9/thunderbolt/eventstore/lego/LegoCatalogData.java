@@ -13,8 +13,6 @@ import sandbox9.thunderbolt.entity.catalog.repository.CatalogProductRepository;
 import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.repository.ProductRepository;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static sandbox9.thunderbolt.eventstore.lego.LegoProductData.*;
 
 /**
@@ -56,6 +54,7 @@ public class LegoCatalogData {
 
         // assertion
         CatalogProduct saved = catalogProductRepository.findOne(catalogProductId);
+
         assertNotNull(saved);
         assertEquals(catalogProduct.getStandardSku().getSkuId(), saved.getStandardSku().getSkuId());
         assertEquals(catalogId, saved.getCatalogId());

@@ -6,7 +6,7 @@ apply plugin: 'war'
 version = '1.0-SNAPSHOT'
 
 war {
-    baseName = "api"
+    baseName = "product-api"
 }
 
 repositories {
@@ -38,7 +38,6 @@ buildscript {
 }
 
 dependencies {
+    testCompile project(':model')
     compile project(':model')
-
-    testCompile group: 'junit', name: 'junit', version: '4.11'
 }

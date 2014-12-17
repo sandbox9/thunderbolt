@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface CatalogProductCustomRepository {
     List<CatalogProduct> find(String catalogId, int pageNumber, int pageSize);
+
+    CatalogProduct find(int productId, int skuId);
 }

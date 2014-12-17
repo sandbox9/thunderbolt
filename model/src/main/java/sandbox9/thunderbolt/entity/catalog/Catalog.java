@@ -50,10 +50,7 @@ public class Catalog implements Serializable {
     public List<Product> originalProductList() {
         List<Product> productList = new ArrayList<Product>();
         for (CatalogProduct p : this.productList) {
-            Product original = new Product();
-            original.setProductId(p.getProductId());
-            original.setStandardSkuId(p.getStandardSku().getSkuId());
-            original.addSku(p.getStandardSku());
+            Product original = p.createOriginalProduct();
             productList.add(original);
         }
         return productList;

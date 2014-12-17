@@ -6,5 +6,6 @@ import sandbox9.thunderbolt.entity.catalog.CatalogProduct;
 /**
  * Created by chanwook on 2014. 12. 11..
  */
-public interface CatalogProductRepository extends MongoRepository<CatalogProduct, String> {
+public interface CatalogProductRepository extends MongoRepository<CatalogProduct, String>, CatalogProductCustomRepository {
+
 }

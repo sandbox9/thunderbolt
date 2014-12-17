@@ -3,7 +3,6 @@ package sandbox9.thunderbolt.entity.catalog.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Repository;
 import sandbox9.thunderbolt.entity.catalog.CatalogProduct;
 
 import java.util.List;
@@ -14,7 +13,6 @@ import static org.springframework.data.mongodb.core.query.Query.query;
 /**
  * Created by chanwook on 2014. 12. 11..
  */
-@Repository
 public class CatalogProductRepositoryImpl implements CatalogProductCustomRepository {
 
     @Autowired
@@ -26,5 +24,11 @@ public class CatalogProductRepositoryImpl implements CatalogProductCustomReposit
                 .skip((pageNumber - 1) * pageSize).limit(pageSize);
         List<CatalogProduct> productList = t.find(query, CatalogProduct.class);
         return productList;
+    }
+
+    @Override
+    public CatalogProduct find(int productId, int skuId) {
+        Query query = query(where("productId").is(productId).and("standardSku.skuId").is(skuId));
+        return t.findOne(query, CatalogProduct.class);
     }
 }

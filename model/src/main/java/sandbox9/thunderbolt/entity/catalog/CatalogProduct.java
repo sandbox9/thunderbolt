@@ -3,6 +3,7 @@ package sandbox9.thunderbolt.entity.catalog;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.Sku;
 
 import java.io.Serializable;
@@ -113,5 +114,13 @@ public class CatalogProduct implements Serializable {
 
     public void setCatalogId(String catalogId) {
         this.catalogId = catalogId;
+    }
+
+    public Product createOriginalProduct() {
+        Product original = new Product();
+        original.setProductId(getProductId());
+        original.setStandardSkuId(getStandardSku().getSkuId());
+        original.addSku(getStandardSku());
+        return original;
     }
 }
