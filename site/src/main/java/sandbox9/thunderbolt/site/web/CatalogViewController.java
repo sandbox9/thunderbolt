@@ -21,6 +21,6 @@ public class CatalogViewController {
     public String viewCatalog(@PathVariable String catalogId, ModelMap model) {
         Catalog catalog = catalogApi.getOne(catalogId);
         model.put("catalog", catalog);
-        return "catalogView";
+        return "catalogview";
     }
 }

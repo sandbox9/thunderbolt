@@ -5,7 +5,7 @@ version = '1.0-SNAPSHOT'
 
 
 jar {
-    baseName = "product-model"
+    baseName = "model"
 }
 
 repositories {

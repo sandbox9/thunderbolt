@@ -1,9 +1,9 @@
 rootProject.name = 'thunderbolt'
 
 include 'commonlib'
+include 'model'
 include 'site'
 include 'api'
-include 'model'
 include 'admin'
 include 'eventstore'
 

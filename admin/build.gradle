@@ -2,7 +2,6 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'maven'
 apply plugin: 'spring-boot'
-apply plugin: 'idea'
 
 version = '1.0-SNAPSHOT'
 
@@ -35,20 +34,13 @@ buildscript {
 
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.0.RELEASE'
-        classpath 'org.springframework:springloaded:1.2.0.RELEASE'
-    }
-}
-
-idea {
-    module {
-        inheritOutputDirs = false
-        outputDir = file("$buildDir/classes/main/")
     }
 }
 
 dependencies {
-    compile project(':commonlib')
     compile project(':model')
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
 
     def springBootVersion = '1.2.0.RELEASE'
     compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
