@@ -32,4 +32,9 @@ idea {
 dependencies {
     compile project (':commonlib')
     compile project (':model')
+
+    // spring thymeleaf -> boot
+    def springBootVersion = '1.2.0.RELEASE'
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}"
+
 }

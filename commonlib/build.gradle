@@ -53,9 +53,6 @@ dependencies {
     // spring amqp -> boot
     compile "org.springframework.boot:spring-boot-starter-amqp:${springBootVersion}"
 
-    // spring thymeleaf -> boot
-    compile "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}"
-
     // slf4j
 //    compile "org.slf4j:slf4j-api:${slf4jVersion}"
 //    compile "org.slf4j:slf4j-log4j12:${slf4jVersion}"
