@@ -3,7 +3,7 @@ package sandbox9.thunderbolt.event.product.listener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sandbox9.thunderbolt.event.product.message.ProductEvent;
-import sandbox9.thunderbolt.event.product.repository.ProductEventRepository;
+import sandbox9.thunderbolt.event.product.repository.ProductEventMongoRepository;
 
 /**
  * Created by chanwook on 2014. 12. 16..
@@ -12,9 +12,9 @@ public class ProductEventMessageListener {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    private ProductEventRepository productEventRepository;
+    private ProductEventMongoRepository productEventRepository;
 
-    public ProductEventMessageListener(ProductEventRepository productEventRepository) {
+    public ProductEventMessageListener(ProductEventMongoRepository productEventRepository) {
         this.productEventRepository = productEventRepository;
     }
 

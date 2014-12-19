@@ -5,7 +5,8 @@ import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.event.product.handler.ProductEventHandler;
 import sandbox9.thunderbolt.event.product.message.ProductEvent;
 import sandbox9.thunderbolt.event.product.message.ProductEventCommand;
-import sandbox9.thunderbolt.event.product.repository.ProductEventRepository;
+import sandbox9.thunderbolt.event.product.repository.ProductEventCustomRepository;
+import sandbox9.thunderbolt.event.product.repository.ProductEventMongoRepository;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,14 +18,14 @@ import java.util.Map;
 public class SimpleProductEventStore implements ProductEventStore {
 
     @Autowired
-    private ProductEventRepository r;
+    private ProductEventCustomRepository c;
 
     private Map<ProductEvent.ProductEventType, ProductEventHandler> eventHandlerMap =
             new HashMap<ProductEvent.ProductEventType, ProductEventHandler>();
 
     @Override
     public void process(ProductEventCommand command) {
-        List<ProductEvent> eventList = r.find(command.getProductList());
+        List<ProductEvent> eventList = c.find(command.getProductList());
 
         for (ProductEvent event : eventList) {
             Product product = command.getProduct(event.getProductId());

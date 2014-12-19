@@ -9,7 +9,7 @@ import sandbox9.thunderbolt.admin.model.ProductViewModelMap;
 import sandbox9.thunderbolt.admin.service.ProductEventHandleService;
 import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.client.ProductApi;
-import sandbox9.thunderbolt.entity.product.repository.ProductRepository;
+import sandbox9.thunderbolt.entity.product.repository.ProductMongoRepository;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import java.util.List;
 public class ProductViewController {
 
     @Autowired
-    private ProductRepository pr;
+    private ProductMongoRepository pr;
 
     @Autowired
     private ProductEventHandleService eventService;

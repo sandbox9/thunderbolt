@@ -12,7 +12,7 @@ import sandbox9.thunderbolt.admin.web.ProductViewController;
 import sandbox9.thunderbolt.entity.product.Product;
 import sandbox9.thunderbolt.entity.product.Sku;
 import sandbox9.thunderbolt.entity.product.client.ProductApi;
-import sandbox9.thunderbolt.entity.product.repository.ProductRepository;
+import sandbox9.thunderbolt.entity.product.repository.ProductMongoRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class ProductEventCreateTests {
     ProductViewController c;
 
     @Autowired
-    ProductRepository r;
+    ProductMongoRepository r;
 
     @Autowired
     ProductApi clientService;

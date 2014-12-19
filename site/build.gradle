@@ -1,31 +1,22 @@
-apply plugin: 'java'
-apply plugin: 'maven'
 apply plugin: 'spring-boot'
-apply plugin: 'war'
-
-version = '1.0-SNAPSHOT'
-
-war {
-    baseName = "site"
-}
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
 
 buildscript {
-    repositories { jcenter() }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+
+        maven {
+            url "http://repo.spring.io/lib-release"
+        }
+
+        jcenter()
+    }
+
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.0.RELEASE"
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.0.RELEASE'
     }
 }
 
 dependencies {
-    compile project (':model')
-
-    // spring thymeleaf -> boot
-    def springBootVersion = '1.2.0.RELEASE'
-    compile "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}"
-
+    compile project(':model')
 }

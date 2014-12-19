@@ -1,11 +1,10 @@
 rootProject.name = 'thunderbolt'
 
-include 'commonlib'
 include 'model'
 include 'site'
-include 'product-api'
-include 'order-api'
+include 'api'
 include 'admin'
 include 'eventstore'
+
 
 
