@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import sandbox9.thunderbolt.config.QueueConfiguration;
 import sandbox9.thunderbolt.event.product.listener.ProductEventMessageListener;
 import sandbox9.thunderbolt.event.product.repository.ProductEventMongoRepository;
 
@@ -15,18 +16,12 @@ import sandbox9.thunderbolt.event.product.repository.ProductEventMongoRepository
  * Created by chanwook on 2014. 12. 6..
  */
 @Configuration
-public class QueueConfiguration {
+public class EventQueueConfiguration extends QueueConfiguration{
 
-    @Value("${queue.hostname}")
-    private String hostname;
     @Value("${queue.queuename.product}")
     private String productQueueName;
     @Value("${queue.exchangename.product}")
     private String exchangeName;
-    @Value("${queue.username}")
-    private String userName;
-    @Value("${queue.password}")
-    private String password;
 
     @Autowired
     ProductEventMongoRepository productEventRepository;

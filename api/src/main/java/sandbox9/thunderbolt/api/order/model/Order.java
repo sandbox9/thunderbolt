@@ -18,7 +18,7 @@ public class Order implements Serializable {
     @Column(name = "ORDER_ID")
     private long orderId;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 
     private OrderState state;
@@ -29,16 +29,9 @@ public class Order implements Serializable {
 
     }
 
-    public Order(Customer customer, OrderState state) {
+    public Order(Customer customer) {
         this.customer = customer;
-        this.state = state;
-    }
-
-
-    public Order(List<OrderItem> orderItemList, OrderState state, Customer customer) {
-        this.orderItemList = orderItemList;
-        this.state = state;
-        this.customer = customer;
+        this.state = OrderStateHandler.createOrder();
     }
 
     public long getOrderId() {
@@ -71,5 +64,16 @@ public class Order implements Serializable {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public boolean inState(OrderState state) {
+        if (this.getState().equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
+    public void addItem(OrderItem item) {
+        this.orderItemList.add(item);
     }
 }

@@ -17,6 +17,9 @@ public class OrderItem implements Serializable {
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 
+    @OneToOne(mappedBy = "orderItem", cascade = CascadeType.ALL)
+    private OrderedSku orderedSku;
+
     public long getOrderItemId() {
         return orderItemId;
     }
@@ -31,5 +34,13 @@ public class OrderItem implements Serializable {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public void setOrderedSku(OrderedSku orderedSku) {
+        this.orderedSku = orderedSku;
+    }
+
+    public OrderedSku getOrderedSku() {
+        return orderedSku;
     }
 }

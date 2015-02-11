@@ -1,32 +1,24 @@
-package sandbox9.thunderbolt.admin.config;
+package sandbox9.thunderbolt.config;
 
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by chanwook on 2014. 12. 6..
+ * Created by chanwook on 2014. 12. 23..
  */
 @Configuration
 public class QueueConfiguration {
-
     @Value("${queue.hostname}")
-    private String hostname;
-
-    @Value("${queue.exchangename.product}")
-    private String exchangeName;
-
-    @Value("${queue.routingkey.product}")
-    private String routingKey;
+    protected String hostname;
 
     @Value("${queue.username}")
-    private String userName;
+    protected String userName;
 
     @Value("${queue.password}")
-    private String password;
+    protected String password;
 
     @Bean
     ConnectionFactory connectionFactory() {
@@ -37,11 +29,4 @@ public class QueueConfiguration {
         return f;
     }
 
-    @Bean
-    RabbitTemplate rabbitTemplate() {
-        RabbitTemplate t = new RabbitTemplate(connectionFactory());
-        t.setRoutingKey(this.routingKey);
-        t.setExchange(this.exchangeName);
-        return t;
-    }
 }

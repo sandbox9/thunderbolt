@@ -16,7 +16,6 @@ public class ProductApiClient implements ProductApi {
 
     @Override
     public List<Product> getProductAll() {
-
         return null;
     }
 

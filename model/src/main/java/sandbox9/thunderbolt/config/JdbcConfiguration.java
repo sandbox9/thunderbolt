@@ -21,10 +21,12 @@ import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.
         includeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*JpaRepository")
 )
 public class JdbcConfiguration {
+
     @Bean
     public DataSource dataSource() {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         EmbeddedDatabase db = builder.setType(H2).build();
         return db;
     }
+
 }
